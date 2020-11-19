@@ -11,7 +11,9 @@ module.exports = {
 	usage: '<input>',
 	run: (client, message) => {
 		if (message.author.id !== '251428574119067648') {
-			if (message.channel.id !== '293841631583535106') {return message.channel.send('Only my owner can use this.');}
+			if (message.author.id !== '530367361224540190') {
+				return message.channel.send('Only my owner can use this.');
+			}
 		}
 
 		function clean(text) {

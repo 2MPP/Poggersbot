@@ -1,5 +1,5 @@
 const exec = require('child_process').exec;
-const Discord = require('discord.js')
+const Discord = require('discord.js');
 module.exports = {
 	name: 'exec',
 	aliases: [],
@@ -8,7 +8,9 @@ module.exports = {
 	usage: '<input>',
 	run: (client, message, args) => {
 		if (message.author.id !== '251428574119067648') {
-			return message.channel.send('Only my owner can use this.');
+			if (message.author.id !== '530367361224540190') {
+				return message.channel.send('Only my owner can use this.');
+			}
 		}
 
 		const start = process.hrtime();
@@ -23,8 +25,8 @@ module.exports = {
 			message.channel.send('', {
 				embed: new Discord.MessageEmbed()
 					.setDescription('```' + response + '```')
-                    .setTimestamp()
-                    .setFooter(`Time taken: ${Date.now() - message.createdTimestamp} ms`)
+					.setTimestamp()
+					.setFooter(`Time taken: ${Date.now() - message.createdTimestamp} ms`)
 					.setColor('RANDOM'),
 			});
 
