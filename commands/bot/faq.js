@@ -10,7 +10,7 @@ module.exports = {
 			.setTitle('Some title')
 			.addFields(
         { name: 'Q: Were is your bot hosted', value: 'A: I host my bot on my old android phone' },
-        { name: 'Q: Why do you host it on your phone', value: 'A: To be honist i dont know i did it as a meme' },
+        { name: 'Q: Why do you host it on your phone', value: 'A: Because i can' },
         { name: '\u200B', value: 'Still have any questions feel free to dm me ``2MP#6384``' },
       );
       
