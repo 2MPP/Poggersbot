@@ -110,6 +110,21 @@ client.on('guildDelete', guild => {
 	});
 });
 
+const exec = require('child_process').exec;
+setInterval(() => {
+	exec('git pull', (error, stdout) => {
+		const response = (error || stdout);
+		if (!error) {
+			if (response.includes('Already up to date.')) {
+				console.log('Bot already up to date. No changes since last pull');
+			}
+			else {
+				client.channels.cache.get('686618499145400362').send('**[AUTOMATIC]** \nNew update on GitHub. Pulling. \n\nLogs: \n```' + response + '```' + '\n\n\n**Restarting bot**');
+			}
+		}
+	});
+}, 30000);
+
 
 client.on('message', async message => {
 	if (!message.guild) return;
