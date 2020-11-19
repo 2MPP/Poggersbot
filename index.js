@@ -119,7 +119,7 @@ setInterval(() => {
 				console.log('Bot already up to date. No changes since last pull');
 			}
 			else {
-				console.log(`pulled`)
+				console.log('pulled');
 				client.channels.cache.get('686618499145400362').send('**[AUTOMATIC]** \nNew update on GitHub. Pulling. \n\nLogs: \n```' + response + '```' + '\n\n\n**Restarting bot**');
 			}
 		}
