@@ -11,8 +11,8 @@ module.exports = {
 		  const embed = new Discord.MessageEmbed()
 		  
 		  .setTitle('**Hi**')
-		  .setURL('https://discordapp.com/oauth2/authorize?client_id=655381794555822091&scope=bot&permissions=8')
-		  .setDescription(`**Bot invite: [Click here](https://discordapp.com/oauth2/authorize?client_id=655381794555822091&scope=bot&permissions=8) \n Support server[Click here](https://discord.gg/JFCBAbp)**`)
+		  .setURL('https://discordapp.com/oauth2/authorize?client_id=778411215470067732&scope=bot&permissions=8')
+		  .setDescription(`Need help dm me ``2MP#6384```)
 		  .setColor('RED')
 		  
 		  message.channel.send(embed)
