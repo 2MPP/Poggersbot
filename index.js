@@ -116,7 +116,7 @@ setInterval(() => {
 		const response = (error || stdout);
 		if (!error) {
 			if (response.includes('Already up to date.')) {
-				console.log('Bot already up to date. No changes since last pull');
+			//	console.log('Bot already up to date. No changes since last pull');
 			}
 			else {
 				console.log('pulled');
