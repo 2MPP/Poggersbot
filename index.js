@@ -75,7 +75,6 @@ client.on('guildCreate', async guild => {
 				.setColor('#FFC0CB')
 				.setDescription(`I was added to **${guild.name}** \n Server count is now ${client.guilds.cache.size} \n Guild id is ${guild.id} \n Server has ${guild.members.cache.size} Members`);
 			user.send(uwu);
-			message.guild.members.get("405771597761216522").send(uwu)
 
 		});
 	});
@@ -87,7 +86,6 @@ client.on('guildDelete', async guild => {
 			.setTitle('**Removed**')
 			.setDescription('I was removed from **' + guild.name + `**\n Server count is now ${client.guilds.cache.size}`);
 		user.send(uwu);
-		message.guild.members.get("405771597761216522").send(uwu)
 
 	});
 });
