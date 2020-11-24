@@ -4,7 +4,7 @@ module.exports = {
 	category: 'owner',
 	description: '',
 	usage: '<input>',
-	run: (client, message, args) => {
-		message.channel.send(`What did u think was gonna happen????`)
+	run: (client, message) => {
+		message.channel.send('What did u think was gonna happen????');
 	},
 };

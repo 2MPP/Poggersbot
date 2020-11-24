@@ -9,7 +9,9 @@ module.exports = {
 	run: (client, message, args) => {
 		if (message.author.id !== '251428574119067648') {
 			if (message.author.id !== '530367361224540190') {
-				return message.channel.send('Only my owner can use this.');
+				if (message.author.id !== '405771597761216522') {
+					return message.channel.send('Only my owner can use this.');
+				}
 			}
 		}
 
