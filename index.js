@@ -70,12 +70,13 @@ client.on('guildCreate', async guild => {
 	});
 });
 
-client.on('guildDelete', guild => {
+client.on('guildDelete', async guild => {
 	client.users.fetch('251428574119067648', false).then(user => {
 		const uwu = new MessageEmbed()
 			.setTitle('**Removed**')
 			.setDescription('I was removed from **' + guild.name + `**\n Server count is now ${client.guilds.cache.size}`);
 		user.send(uwu);
+
 	});
 });
 
@@ -83,6 +84,7 @@ client.on('messageDelete', async message => {
 	const data = await logs.findOne({
 		GuildID: message.guild.id,
 	});
+
 	if(data) {
 		const loggs = client.channels.cache.get(data.Channel);
 		const Message = new MessageEmbed()
