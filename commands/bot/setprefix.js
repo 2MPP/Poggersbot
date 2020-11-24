@@ -4,6 +4,8 @@ module.exports = {
 	category: 'bot',
 	description: 'sets bots prefix',
 	run: async (client, message, args) => {
+		
+		if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('You have no permissions to do that');
 		const data = await prefixModel.findOne({
 			GuildID: message.guild.id,
 		});
