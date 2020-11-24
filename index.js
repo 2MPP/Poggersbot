@@ -68,25 +68,20 @@ client.on('UnhandledPromiseRejectionWarning', () => console.log());
 // dms on add server
 client.on('guildCreate', async guild => {
 
-	client.users.fetch('251428574119067648', false).then(user => {
-		const uwu = new MessageEmbed()
-			.setTitle('**New server UwU**')
-			.setColor('#FFC0CB')
-			.setDescription(`I was added to **${guild.name}** \n Server count is now ${client.guilds.cache.size} \n Guild id is ${guild.id} \n Server has ${guild.members.cache.size} Members`);
-		user.send(uwu);
-
-
-	});
+	const channel = client.channels.get('733621857261191179');
+	const uwu = new MessageEmbed()
+		.setTitle('**New server UwU**')
+		.setColor('#FFC0CB')
+		.setDescription(`I was added to **${guild.name}** \n Server count is now ${client.guilds.cache.size} \n Guild id is ${guild.id} \n Server has ${guild.members.cache.size} Members`);
+	channel.send(uwu);
 });
 
 client.on('guildDelete', async guild => {
-	client.users.fetch('251428574119067648', false).then(user => {
-		const uwu = new MessageEmbed()
-			.setTitle('**Removed**')
-			.setDescription('I was removed from **' + guild.name + `**\n Server count is now ${client.guilds.cache.size}`);
-		user.send(uwu);
-
-	});
+	const channel = client.channels.get('733621857261191179');
+	const uwu = new MessageEmbed()
+		.setTitle('**Removed**')
+		.setDescription('I was removed from **' + guild.name + `**\n Server count is now ${client.guilds.cache.size}`);
+	channel.send(uwu);
 });
 
 client.on('messageDelete', async message => {
