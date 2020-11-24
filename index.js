@@ -9,9 +9,13 @@ const logs = require('./models/channel');
 const welcome = require('./models/welcome');
 
 // end of MogoDB stuff
-const client = new Client({ disableMentions: 'everyone',
+const client = new Client({
+	disableMentions: 'everyone',
+	messageCacheLifetime: 180,
+	messageCacheMaxSize: 200,
+	messageSweepInterval: 180,
 	ws:{
-		intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS', 'GUILD_VOICE_STATES' ],
+		intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_BANS', 'GUILD_EMOJIS', 'GUILD_INTEGRATIONS', 'GUILD_WEBHOOKS', 'GUILD_INVITES', 'GUILD_VOICE_STATES', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS', 'GUILD_MESSAGE_TYPING', 'DIRECT_MESSAGES', 'DIRECT_MESSAGE_REACTIONS', 'DIRECT_MESSAGE_TYPING'],
 	} });
 
 
