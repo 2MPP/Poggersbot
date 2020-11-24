@@ -48,6 +48,11 @@ client.on('ready', async () => {
 			'type': 'PLAYING',
 			'status': 'online',
 		},
+		{
+			'text': '16 servers in 1 day thanks all <3',
+			'type': 'PLAYING',
+			'status': 'online',
+		},
 	];
 
 	setInterval(() => {
