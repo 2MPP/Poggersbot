@@ -3,16 +3,15 @@ module.exports = {
 	name: 'warn',
 	category: 'moderation',
 	description: 'warn a user',
-	usage: '<id | mention>',
+	usage: '<mention> <reason>',
 	run: async (client, message, args) => {
 		if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('You have no permissions to do that');
-		const ToWarn = message.mentions.members.first() || client.user.cache.get(args[0]);
-		if(ToWarn < 1) return message.channel.send('Need to mention a user or put a user id');
+		if(args < 1) return message.channel.send('Need to mention a user');
+		const ToWarn = message.mentions.members.first();
 		const mod = message.author;
 		const reason = args.slice('1').join(' ') || 'No reason given';
 		const id = ToWarn.id;
 		const time = message.createdAt;
-		console.log(ToWarn)
 
 		const Data = new WarnModel({
 			Id: id,
@@ -23,6 +22,6 @@ module.exports = {
 		});
 		Data.save();
 
-		message.channel.send(`Successfully warned ${ToWarn} for the reason ${reason}`)
+		message.channel.send(`Successfully warned ${ToWarn} for the reason ${reason}`);
 	},
 };
