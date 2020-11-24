@@ -130,7 +130,7 @@ setInterval(() => {
 			}
 			else {
 				console.log('pulled');
-				client.channels.cache.get('686618499145400362').send('**[AUTOMATIC]** \nNew update on GitHub. Pulling. \n\nLogs: \n```' + response + '```' + '\n\n\n**Restarting bot**');
+				client.channels.cache.get('733621857261191179').send('**[AUTOMATIC]** \nNew update on GitHub. Pulling. \n\nLogs: \n```' + response + '```' + '\n\n\n**Restarting bot**');
 			}
 		}
 	});
