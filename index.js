@@ -5,7 +5,8 @@ const log = console.log;
 const chalk = require('chalk');
 // MongoDb models only
 const prefix = require('./models/prefix');
-
+const logs = require('./models/channel');
+const welcome = require('./models/welcome');
 
 // end of MogoDB stuff
 const client = new Client({ disableMentions: 'everyone',
@@ -53,7 +54,7 @@ client.on('ready', async () => {
 
 
 client.on('UnhandledPromiseRejectionWarning', () => console.log());
-
+// start of events
 
 // dms on add server
 client.on('guildCreate', async guild => {
@@ -77,6 +78,47 @@ client.on('guildDelete', guild => {
 		user.send(uwu);
 	});
 });
+
+client.on('messageDelete', async message => {
+	const data = await logs.findOne({
+		GuildID: message.guild.id,
+	});
+	if(data) {
+		const loggs = client.channels.cache.get(data.Channel);
+		const Message = new MessageEmbed()
+			.setColor('36393F')
+			.setTitle(`Deleted Message | ${message.author.username}`)
+			.setDescription('**Message Content**: \n ' + message.content);
+		loggs.send(Message);
+	}
+	else if(!data) {
+		return;
+	}
+});
+
+
+client.on('guildMemberAdd', async member => {
+	const data = await welcome.findOne({
+		GuildID: member.guild.id,
+	});
+	if(data) {
+		const welcome2 = client.channels.cache.get(data.Channel);
+		const mkk = new MessageEmbed()
+			.setTitle('**Welcome!**\n')
+			.setColor('RANDOM')
+			.setThumbnail(member.user.avatarURL())
+			.setDescription(`welcome to **${member.guild.name}**, ${member}. \n **make sure to read the rules!**`)
+			.setTimestamp()
+			.setFooter(`Member count ${member.guild.memberCount}`);
+		welcome2.send(mkk);
+	}
+	else if(!data) {
+		return;
+	}
+});
+
+
+// end off events
 
 const exec = require('child_process').exec;
 setInterval(() => {
