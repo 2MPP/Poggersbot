@@ -49,7 +49,7 @@ client.on('ready', async () => {
 			'status': 'online',
 		},
 		{
-			'text': '16 servers in 1 day thanks all <3',
+			'text': 'Thanks for the love you all gave the bot',
 			'type': 'PLAYING',
 			'status': 'online',
 		},
