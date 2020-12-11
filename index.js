@@ -211,6 +211,66 @@ client.on('message', async message => {
 });
 
 
-client.login(process.env.token);
-client.mongoose.init();
-console.log('Im online u big gay');
+
+(async () => {
+	client.mongoose.init();
+	const { Manager } = require('erela.js');
+
+	await client.login(process.env.token);
+
+
+	// =================================== MUSIC STUFF =============================================
+
+	const nodes = [
+		{
+			host: 'antifurry-lavalink.herokuapp.com',
+			password: 'AntiFurry',
+			port: 80,
+			retryAmount: 280,
+			retryDelay: 30e3,
+		},
+	];
+
+
+	client.manager = new Manager({
+		nodes,
+		autoPlay: true,
+		send: (id, payload) => {
+			const guild = client.guilds.cache.get(id);
+			if (guild) guild.shard.send(payload);
+		},
+	});
+
+	client.manager.init(client.user.id);
+	console.log(`Logged in as ${client.user.tag}`);
+
+	client.manager.on('nodeConnect', node => {
+		console.log(`Node "${node.options.identifier}" connected.`);
+	});
+
+	client.manager.on('nodeError', (node, error) => {
+		console.log(`Node "${node.options.identifier}" encountered an error: ${error.message}.`);
+	});
+
+	client.on('raw', d => client.manager.updateVoiceState(d));
+
+	client.manager.on('trackStart', (player, track) => {
+		const Discord = require('discord.js');
+		const embed = new Discord.MessageEmbed()
+			.setDescription(`Now playing: \`${track.title}\`, requested by \`${track.requester.tag}\`.`)
+			.setColor('#FFD700');
+
+		const channel = client.channels.cache.get(player.textChannel);
+		channel.send(embed).then(msg => {
+			msg.delete({ timeout: track.duration });
+		});
+
+	});
+
+	// Emitted the player queue ends
+	client.manager.on('queueEnd', player => {
+		const channel = client.channels.cache.get(player.textChannel);
+		channel.send('Queue has ended.');
+		player.destroy();
+	});
+})();
