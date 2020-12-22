@@ -12,7 +12,7 @@ module.exports = {
 			family: 4,
 		};
 
-		mongoose.connect('mongodb+srv://2MPP:BACCON3gg*@poggersbot.dgiwa.mongodb.net/data', dbOptions);
+		mongoose.connect('mongodb+srv://2MPP:QUCmA2SM10Hd2NHf@poggersbot.dgiwa.mongodb.net/data', dbOptions);
 		mongoose.set('useFindAndModify', false);
 		mongoose.Promise = global.Promise;
 
