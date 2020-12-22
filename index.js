@@ -180,16 +180,20 @@ setInterval(() => {
 client.on('message', async message => {
 	if (!message.guild) return;
 	if (message.author.bot) return;
-	if (message.content.startsWith('<@!778411215470067732>' || '<@778411215470067732>')) {
-		message.reply(`My server prefix is **${prefix}** use **${prefix}**help for a list of commands \n You can change this with **${prefix}**setprefix`);
-	}
-
 	const data = await prefix.findOne({
 		GuildID: message.guild.id,
 	});
+	if (message.content.startsWith('<@!778411215470067732>')) {
+		message.reply(`My server prefix is **${data.prefix}** use **${data.prefix}**help for a list of commands \n You can change this with **${data.prefix}**setprefix`);
+	}
+	if (message.content.startsWith('<@778411215470067732>')) {
+		message.reply(`My server prefix is **${data.prefix}** use **${data.prefix}**help for a list of commands \n You can change this with **${data.prefix}**setprefix`);
+	}
+
 
 	if(data) {
 		const prefix = data.Prefix;
+
 		if (!message.content.startsWith(prefix)) return;
 		if (!message.member) message.member = await message.guild.fetchMember(message);
 		const args = message.content.slice(prefix.length).trim().split(/ +/g);
