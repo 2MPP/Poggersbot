@@ -184,10 +184,10 @@ client.on('message', async message => {
 		GuildID: message.guild.id,
 	});
 	if (message.content.startsWith('<@!778411215470067732>')) {
-		message.reply(`My server prefix is **${data.prefix}** use **${data.prefix}**help for a list of commands \n You can change this with **${data.prefix}**setprefix`);
+		message.reply(`My server prefix is **${data.Prefix}** use **${data.Prefix}**help for a list of commands \n You can change this with **${data.Prefix}**setprefix`);
 	}
 	if (message.content.startsWith('<@778411215470067732>')) {
-		message.reply(`My server prefix is **${data.prefix}** use **${data.prefix}**help for a list of commands \n You can change this with **${data.prefix}**setprefix`);
+		message.reply(`My server prefix is **${data.Prefix}** use **${data.Prefix}**help for a list of commands \n You can change this with **${data.Prefix}**setprefix`);
 	}
 
 
