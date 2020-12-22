@@ -7,7 +7,7 @@ const chalk = require('chalk');
 const prefix = require('./models/prefix');
 const logs = require('./models/channel');
 const welcome = require('./models/welcome');
-
+const warn = require('./models/warn');
 // end of MogoDB stuff
 const client = new Client({
 	disableMentions: 'everyone',
@@ -75,9 +75,9 @@ client.on('guildCreate', async guild => {
 			.setColor('#FFC0CB')
 			.setDescription(`I was added to **${guild.name}** \n Server count is now ${client.guilds.cache.size} \n Guild id is ${guild.id} \n Server has ${guild.members.cache.size} Members`);
 		user.send(uwu);
-
 	});
 });
+
 
 client.on('guildDelete', async guild => {
 	client.users.fetch('251428574119067648', false).then(user => {
@@ -86,8 +86,15 @@ client.on('guildDelete', async guild => {
 			.setDescription('I was removed from **' + guild.name + `**\n Server count is now ${client.guilds.cache.size}`);
 		user.send(uwu);
 
+
 	});
+	await logs.deleteOne({ GuildID: guild.id });
+	await welcome.deleteOne({ GuildID: guild.id });
+	await prefix.deleteOne({ GuildID: guild.id });
+	await warn.deleteMany({ GuildID: guild.id });
+
 });
+
 
 client.on('guildCreate', async guild => {
 
@@ -98,7 +105,6 @@ client.on('guildCreate', async guild => {
 			.setColor('#FFC0CB')
 			.setDescription(`I was added to **${guild.name}** \n Server count is now ${client.guilds.cache.size} \n Guild id is ${guild.id} \n Server has ${guild.members.cache.size} Members`);
 		user.send(uwu);
-
 	});
 });
 
@@ -209,7 +215,6 @@ client.on('message', async message => {
 		log(chalk.blue('[Discord Command]') + chalk.red(' The command ') + chalk.cyan.bold(`${command.name}`) + chalk.green(` Was used by ${message.author.username}#${message.author.discriminator} (${message.author.id})`));
 	}
 });
-
 
 
 (async () => {
