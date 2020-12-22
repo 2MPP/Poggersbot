@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
 	name: 'exec',
 	aliases: [],
-	category: 'owner',
+	category: 'owner-bot',
 	description: 'Run some exec code',
 	usage: '<input>',
 	run: (client, message, args) => {

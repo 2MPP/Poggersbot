@@ -6,7 +6,7 @@ const execSync = require('child_process').execSync;
 module.exports = {
 	name: 'eval',
 	aliases: [],
-	category: 'owner',
+	category: 'owner-bot',
 	description: 'Run some eval code',
 	usage: '<input>',
 	run: (client, message) => {
