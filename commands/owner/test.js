@@ -5,6 +5,6 @@ module.exports = {
 	description: '',
 	usage: '<input>',
 	run: (client, message) => {
-		console.log(message.guild.id)
+		message.channel.send("oops")
 	},
 };
