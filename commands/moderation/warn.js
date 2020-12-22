@@ -2,6 +2,7 @@ const WarnModel = require('../../models/warn');
 const logs = require('../../models/channel');
 const { v4: uuidv4 } = require('uuid');
 const Discord = require('discord.js');
+const uuid = uuidv4()
 module.exports = {
 	name: 'warn',
 	category: 'moderation',
@@ -24,7 +25,7 @@ module.exports = {
 			User: ToWarn.user.username,
 			Time: time,
 			GuildID: message.guild.id,
-			_id: uuidv4(),
+			_id: uuid,
 		});
 		Data.save();
 		// sending to logs channel
@@ -37,7 +38,7 @@ module.exports = {
 			const Message = new Discord.MessageEmbed()
 
 				.setColor('#FF0000')
-				.setTitle(`New report (UUID ${uuidv4()} )`)
+				.setTitle(`New report (UUID ${uuid} )`)
 				.addFields(
 					{ name: 'Warned user', value: ToWarn },
 					{ name: 'Warned user\'s id', value: id },
@@ -54,7 +55,7 @@ module.exports = {
 			const Message = new Discord.MessageEmbed()
 
 				.setColor('#FF0000')
-				.setTitle(`New report (UUID ${uuidv4()} )`)
+				.setTitle(`New report (UUID ${uuid} )`)
 				.addFields(
 					{ name: 'Warned user', value: ToWarn },
 					{ name: 'Warned user\'s id', value: id },

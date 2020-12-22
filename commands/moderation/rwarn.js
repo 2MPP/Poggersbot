@@ -5,6 +5,7 @@ module.exports = {
 	description: 'removes warns using uuid',
 	usage: '<uuid>',
 	run: async (client, message, args) => {
+		if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('You have no permissions to do that');
 		WarnModel.findByIdAndDelete(args[0]).then(async document => {
 			if (!document) return message.channel.send('That is an invalid UUID!');
 			if (document.Id == message.member.id) {
