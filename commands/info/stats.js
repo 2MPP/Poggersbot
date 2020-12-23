@@ -15,7 +15,7 @@ module.exports = {
 		const stats = new Discord.MessageEmbed()
 			.setColor('#0099ff')
 			.addFields(
-				{ name: 'Cached memebers', value: users },
+				{ name: 'Cached members', value: users },
 				{ name: 'Servers', value: servers },
 				{ name: 'Ping', value: ping },
 				{ name: 'Ram Usage', value: mb + 'MB' },

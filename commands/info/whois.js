@@ -21,6 +21,7 @@ const flags = {
 
 module.exports = {
 	name: 'whois',
+	category: 'info',
 	aliases: ['who', 'user', 'info', 'userinfo'],
 	description: 'Returns user information',
 	usage: '[username | id | mention]',
@@ -32,7 +33,7 @@ module.exports = {
 		const joined = formatDate(member.joinedAt);
 		const roles = member.roles.cache
 			.filter(r => r.id !== message.guild.id)
-			.map(r => r).join(', ') || 'none';
+			.map(r => r).join(', ') || 'N/A';
 
 		// User variables
 		const created = formatDate(member.user.createdAt);
@@ -50,7 +51,7 @@ module.exports = {
 			.addField('User information:', stripIndents`**- ID:** ${member.user.id}
             **- Username**: ${member.user.username}
             **- Tag**: ${member.user.tag}
-            **- User badges**: ${UserFlags.length ? UserFlags.map(flag => flags[flag]).join(' ') : 'non'} 
+            **- User badges**: ${UserFlags.length ? UserFlags.map(flag => flags[flag]).join(' ') : 'N/A'} 
             **- Created at**: ${created}`, true)
 
 
