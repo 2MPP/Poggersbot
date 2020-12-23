@@ -204,6 +204,7 @@ client.on('message', async message => {
 
 		if (message.content.startsWith(prefix)) {
 			log(chalk.blue('[Discord Command]') + chalk.red(' The command ') + chalk.cyan.bold(`${message.content}`) + chalk.green(` Was used by ${message.author.username}#${message.author.discriminator} (${message.author.id})`));
+		}
 
 		if (!message.content.startsWith(prefix)) return;
 		if (!message.member) message.member = await message.guild.fetchMember(message);
@@ -212,6 +213,7 @@ client.on('message', async message => {
 		const cmd = args.shift().toLowerCase();
 		if (cmd.length === 0) return;
 		let command = client.commands.get(cmd);
+
 		try {
 			if (!cooldowns.has(command.name)) {
 				cooldowns.set(command.name, new Collection());
@@ -233,11 +235,11 @@ client.on('message', async message => {
 
 		}
 		catch (error) {
-
+			console.log();
 		}
+
 		if (!command) command = client.commands.get(client.aliases.get(cmd));
 		if (command) {command.run(client, message, args);}
-		
 	}
 	else if (!data) {
 
@@ -247,13 +249,14 @@ client.on('message', async message => {
 			log(chalk.blue('[Discord Command]') + chalk.red(' The command ') + chalk.cyan.bold(`${message.content}`) + chalk.green(` Was used by ${message.author.username}#${message.author.discriminator} (${message.author.id})`));
 		}
 
-
 		if (!message.content.startsWith(prefix)) return;
 		if (!message.member) message.member = await message.guild.fetchMember(message);
 		const args = message.content.slice(prefix.length).trim().split(/ +/g);
 		const cmd = args.shift().toLowerCase();
 		if (cmd.length === 0) return;
 		let command = client.commands.get(cmd);
+
+
 		try {
 			if (!cooldowns.has(command.name)) {
 				cooldowns.set(command.name, new Collection());
@@ -275,10 +278,12 @@ client.on('message', async message => {
 
 		}
 		catch (error) {
-
+			console.log();
 		}
+
 		if (!command) command = client.commands.get(client.aliases.get(cmd));
 		if (command) {command.run(client, message, args);}
+		log(chalk.blue('[Discord Command]') + chalk.red(' The command ') + chalk.cyan.bold(`${command.name}`) + chalk.green(` Was used by ${message.author.username}#${message.author.discriminator} (${message.author.id})`));
 	}
 });
 
