@@ -3,8 +3,9 @@ module.exports = {
 	aliases: [],
 	category: 'owner-bot',
 	description: '',
+	cooldown: 60,
 	usage: '<input>',
 	run: (client, message) => {
-		message.channel.send("oops, REEEEEEEEEEEEEEEE")
+		message.channel.send('oops, REEEEEEEEEEEEEEEE');
 	},
 };
