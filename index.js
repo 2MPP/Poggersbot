@@ -262,7 +262,7 @@ client.on('message', async message => {
 
 		if (!command) command = client.commands.get(client.aliases.get(cmd));
 		if (command) {command.run(client, message, args);}
-		statcord.postCommand(command, message.author.id);
+		statcord.postCommand(command.name, message.author.id);
 	}
 	else if (!data) {
 
@@ -306,7 +306,7 @@ client.on('message', async message => {
 
 		if (!command) command = client.commands.get(client.aliases.get(cmd));
 		if (command) {command.run(client, message, args);}
-		statcord.postCommand(command, message.author.id);
+		statcord.postCommand(command.name, message.author.id);
 	}
 });
 
