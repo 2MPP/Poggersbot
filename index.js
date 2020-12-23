@@ -2,6 +2,7 @@ const { Client, Collection, MessageEmbed } = require('discord.js');
 const { config } = require('dotenv');
 const fs = require('fs');
 const log = console.log;
+const Statcord = require('statcord.js');
 const chalk = require('chalk');
 // MongoDb models only
 const prefix = require('./models/prefix');
@@ -18,6 +19,27 @@ const client = new Client({
 	ws:{
 		intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_BANS', 'GUILD_EMOJIS', 'GUILD_INTEGRATIONS', 'GUILD_WEBHOOKS', 'GUILD_INVITES', 'GUILD_VOICE_STATES', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS', 'GUILD_MESSAGE_TYPING', 'DIRECT_MESSAGES', 'DIRECT_MESSAGE_REACTIONS', 'DIRECT_MESSAGE_TYPING'],
 	} });
+
+const statcord = new Statcord.Client({
+	client,
+	key: 'statcord.com-lqDZFFZcjD7jBqnAYMEb',
+	postCpuStatistics: true,
+	postMemStatistics: true,
+	postNetworkStatistics: true,
+});
+
+// statscord auto post
+statcord.on('autopost-start', () => {
+	// Emitted when statcord autopost starts
+	console.log('Started autopost');
+});
+
+statcord.on('post', status => {
+	// status = false if the post was successful
+	// status = "Error message" or status = Error if there was an error
+	if (!status) console.log('Successful post');
+	else console.error(status);
+});
 
 
 client.commands = new Collection();
@@ -37,7 +59,7 @@ config({
 const cooldowns = new Collection();
 
 client.on('ready', async () => {
-
+	statcord.autopost();
 
 	const activities = [
 		{
@@ -240,6 +262,7 @@ client.on('message', async message => {
 
 		if (!command) command = client.commands.get(client.aliases.get(cmd));
 		if (command) {command.run(client, message, args);}
+		statcord.postCommand(command, message.author.id);
 	}
 	else if (!data) {
 
@@ -283,7 +306,7 @@ client.on('message', async message => {
 
 		if (!command) command = client.commands.get(client.aliases.get(cmd));
 		if (command) {command.run(client, message, args);}
-		log(chalk.blue('[Discord Command]') + chalk.red(' The command ') + chalk.cyan.bold(`${command.name}`) + chalk.green(` Was used by ${message.author.username}#${message.author.discriminator} (${message.author.id})`));
+		statcord.postCommand(command, message.author.id);
 	}
 });
 
