@@ -1,7 +1,7 @@
 const { RichEmbed } = require("discord.js");
 
 module.exports = {
-    name: "numbergenarator",
+    name: "numbergenerator",
     category: "fun",
     aliases: ["numgen"],
     description: "picks a random number 1 to 1000000",

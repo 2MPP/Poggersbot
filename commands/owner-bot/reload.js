@@ -5,7 +5,7 @@ module.exports = {
 	run: async (client, message, args) => {
 		if(message.author.id !== '251428574119067648') {
 			if(message.author.id !== '405771597761216522') {
-			message.channel.send('this command was not made for u SHHHH');
+			message.channel.send('This command was not made for u SHHHH');
 		}
 	}
 		const cmdToUpdate = args[0];
