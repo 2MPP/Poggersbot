@@ -18,10 +18,10 @@ module.exports = {
 		});
 
 		if(data) {
-			message.reply(`Your current balance is \`\`${data.Money}\`\``);
+			message.reply(`your current balance is \`\`${data.Money}\`\``);
 		}
 		else {
-			message.reply(`You dont have any money you can get money by using \`\`${Data.Prefix}work\`\` Or \`\`${Data.Prefix}crime\`\``);
+			message.reply(`you dont have any money you can get money by using \`\`${Data.Prefix}work\`\` Or \`\`${Data.Prefix}crime\`\``);
 		}
 
 
