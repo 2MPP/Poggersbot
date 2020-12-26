@@ -1,4 +1,5 @@
 const { MessageEmbed } = require('discord.js');
+const ecoModdel = require('../../models/eco');
 let questions = [
     {
         title: "Who is the owner of the bot?",
@@ -60,11 +61,32 @@ let questions = [
       options: ["WWE","T-Series","PewDiePie","MrBeast","Dude Perfect"],
       correct: 2
     },
+    {
+      title: "When did Minecraft come out?",
+      options: ["2005","2006","2008","2007","2009", "2010"],
+      correct: 5
+    },
+    {
+      title: "When did Roblox come out?",
+      options: ["2005","2006","2008","2007","2009", "2010"],
+      correct: 2
+    },
+    {
+      title: "What is the best selling game?",
+      options: ["Tetris","Wii Sports","PlayerUnknown's Battlegrounds","Minecraft","Grand Theft Auto V","Super Mario Bros","Wii Sports Resort","Pac-Man"],
+      correct: 4
+    },
+    {
+      title: "What is the most followed Twitch channel?",
+      options: ["Pokimane","Ninja","Tfue","Minecraft","Shroud","Myth","DrLupo","Riot Games"],
+      correct: 2
+    },
 ];
 module.exports = {
     name: "trivia",
     description: "Test your knowledge!",
     category: "fun",
+    cooldown: 1800,
     run: async (bot, message, args) => {
       let q = questions[Math.floor(Math.random() * questions.length)];
       let i = 0;
@@ -82,7 +104,7 @@ module.exports = {
       try {
         let msgs = await message.channel.awaitMessages((u2) => u2.author.id === message.author.id,{ time: 15000, max: 1, errors: ["time"] });
         if (parseInt(msgs.first().content) == q.correct) {
-          return message.channel.send(`You got it correct!`);
+          return message.channel.send(`You got it correct!`) 
         } else {
           return message.channel.send(`You got it incorrect.`);
         }
