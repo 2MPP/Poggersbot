@@ -4,7 +4,8 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "avatar",
-    category: "fun",
+	category: "fun",
+	cooldown: 3,
     description: "sends your mentioned user or your profile pic",
     run: async (client, message) => {
 		const user = message.mentions.users.first()

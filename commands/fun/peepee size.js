@@ -1,6 +1,7 @@
 module.exports = {
 	name: 'pp',
 	category: 'fun',
+	cooldown: 3,
 	aliases: ['penissize'],
 	description: 'Tells your peepee size ',
 	run: async (client, message) => {

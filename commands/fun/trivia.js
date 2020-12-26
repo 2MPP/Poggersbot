@@ -86,7 +86,7 @@ module.exports = {
     name: "trivia",
     description: "Test your knowledge!",
     category: "fun",
-    cooldown: 1800,
+    cooldown: 3,
     run: async (bot, message, args) => {
       let q = questions[Math.floor(Math.random() * questions.length)];
       let i = 0;

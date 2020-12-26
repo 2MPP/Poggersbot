@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	name: 'rps',
 	category: 'fun',
+	cooldown: 3,
 	description: 'This is a Rock Paper Scissors command!',
 	run: async (client, message, args) => {
 

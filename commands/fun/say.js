@@ -4,6 +4,7 @@ module.exports = {
     name: "say",
     aliases: ["bc", "broadcast"],
     category: "fun",
+    cooldown: 3,
     description: "Says your input via the bot",
     usage: "<input>",
     run: (client, message, args) => {
