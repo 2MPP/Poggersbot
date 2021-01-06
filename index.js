@@ -148,6 +148,7 @@ client.on('guildDelete', async guild => {
 });
 
 client.on('messageDelete', async message => {
+	if(message.author.bot) return;
 	const data = await logs.findOne({
 		GuildID: message.guild.id,
 	});
