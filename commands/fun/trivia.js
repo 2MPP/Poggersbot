@@ -81,6 +81,22 @@ let questions = [
       options: ["Pokimane","Ninja","Tfue","Minecraft","Shroud","Myth","DrLupo","Riot Games"],
       correct: 2
     },
+    {
+      title: "What is the most spoken language?",
+      options: ["Mandarin Chinese", "Hindi", "English", "Spanish", ""],
+      correct: 3
+    },
+    {
+      title: "What is the most spoken language?",
+      options: ["Mandarin Chinese", "Hindi", "English", "Spanish", "French"],
+      correct: 3
+    },
+    {
+      title: "What language is this bot programmed in?",
+      options: ["JavaScript", "Python", "Lua", "C#", "Java"],
+      correct: 1
+    }
+
 ];
 module.exports = {
     name: "trivia",
