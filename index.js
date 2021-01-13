@@ -12,6 +12,7 @@ const warn = require('./models/warn');
 const eco = require('./models/eco');
 // end of MogoDB stuff
 const client = new Client({
+	fetchAllMembers: true,
 	disableMentions: 'everyone',
 	messageCacheLifetime: 180,
 	messageCacheMaxSize: 200,
