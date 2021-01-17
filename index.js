@@ -83,80 +83,9 @@ client.on('ready', async () => {
 		client.user.setPresence({ activity: { name: activity.text }, status: activity.status });
 	}, 10000);
 
-	client.api.applications(client.user.id).guilds('625589494145482762').commands.post({
-		data: {
-			name: 'hello',
-			description: 'Just repsonds hello',
-		},
-	});
-
-	client.api.applications(client.user.id).guilds('625589494145482762').commands.post({
-		data: {
-			name: 'embed',
-			description: 'sends a embed',
-			options: [
-				{
-					name: 'title',
-					description: 'Title of the embed',
-					type: 3,
-					required: true,
-				},
-				{
-					name: 'content',
-					description: 'Content in the message',
-					type: 3,
-					required: true,
-				},
-				{
-					name: 'colour',
-					description: 'colour of the embed',
-					type: 3,
-					required: true,
-				},
-			],
-		},
-	});
 
 
 });
-
-client.ws.on('INTERACTION_CREATE', async i => {
-	const command = i.data.name.toLowerCase();
-	const options = i.data.options;
-
-
-	if (command === 'hello') {
-		client.api.interactions(i.id, i.token).callback.post({
-			data: {
-				type: 4,
-				data: {
-					content: 'hi!',
-				},
-			},
-		});
-	}
-
-	if (command === 'embed') {
-		const title = options.find(option => option.name === 'title').value;
-		const content = options.find(option => option.name === 'content').value;
-		const colour = options.find(option => option.name === 'colour').value;
-
-		const embed = new MessageEmbed()
-			.setTitle(title)
-			.setDescription(content)
-			.setColor(colour.toUpperCase());
-
-		const apiMessage = await APIMessage.create(client.channels.resolve(i.channel_id), embed).resolveData().resolveFiles();
-		client.api.interactions(i.id, i.token).callback.post({
-			data: {
-				type: 4,
-				data: apiMessage.data,
-			},
-		});
-	}
-
-});
-
 
 client.on('UnhandledPromiseRejectionWarning', () => console.log());
 // start of events
