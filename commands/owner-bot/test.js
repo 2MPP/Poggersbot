@@ -6,6 +6,6 @@ module.exports = {
 	cooldown: 60,
 	usage: '<input>',
 	run: (client, message) => {
-		message.channel.send('oops, reeee');
+		message.reply('oops, reeee');
 	},
-};
+}
