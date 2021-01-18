@@ -205,7 +205,7 @@ client.on('message', async message => {
 		if(result == 15) {
 			const Member = message.guild.members.cache.get(message.author.id);
 			if (!Member.kickable) {return;}
-			message.channel.send(`${message.author.tagw} has been kicked`);
+			message.channel.send(`${message.author.tag} has been kicked`);
 			Member.kick('AntiSpam');
 		}
 
