@@ -197,6 +197,8 @@ setInterval(() => {
 
 
 client.on('message', async message => {
+	if(message.author.bot) return;
+	if (message.channel.type == "dm") return;
 	if (message.member.hasPermission('ADMINISTRATOR')) return;
 	const data = await antispam.findOne({
 		GuildID: message.guild.id,
