@@ -35,6 +35,12 @@ statcord.on('autopost-start', () => {
 	// Emitted when statcord autopost starts
 	console.log('Started autopost');
 });
+statcord.on('post', status => {
+	// status = false if the post was successful
+	// status = "Error message" or status = Error if there was an error
+	if (!status) console.log('Successful post');
+	else console.error(status);
+});
 
 
 client.commands = new Collection();
