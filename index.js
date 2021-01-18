@@ -10,6 +10,7 @@ const logs = require('./models/channel');
 const welcome = require('./models/welcome');
 const warn = require('./models/warn');
 const eco = require('./models/eco');
+const antispam = require('./models/antispam');
 // end of MogoDB stuff
 const client = new Client({
 	fetchAllMembers: true,
@@ -83,8 +84,6 @@ client.on('ready', async () => {
 		client.user.setPresence({ activity: { name: activity.text }, status: activity.status });
 	}, 10000);
 
-
-
 });
 
 client.on('UnhandledPromiseRejectionWarning', () => console.log());
@@ -118,6 +117,7 @@ client.on('guildDelete', async guild => {
 	await prefix.deleteOne({ GuildID: guild.id });
 	await warn.deleteMany({ GuildID: guild.id });
 	await eco.deleteMany({ GuildID: guild.id });
+	await antispam.deleteMany({ GuildID: guild.id });
 });
 
 
@@ -183,6 +183,41 @@ client.on('guildMemberAdd', async member => {
 	}
 });
 
+var userID = [];
+
+setInterval(() => {
+	userID = [];
+}, 15000);
+
+
+client.on('message', async message => {
+	if (message.member.hasPermission('ADMINISTRATOR')) return;
+	const data = await antispam.findOne({
+		GuildID: message.guild.id,
+	});
+	if(data.Enable == 'enable') {
+		userID.push(message.author.id);
+		const result = userID.filter(x => x == message.author.id).length;
+
+		if(result == 10) {
+			message.channel.send('Warning Please stop spamming');
+		}
+		if(result == 15) {
+			const Member = message.guild.members.cache.get(message.author.id);
+			if (!Member.kickable) {return;}
+			message.channel.send(`${message.author.tagw} has been kicked`);
+			Member.kick('AntiSpam');
+		}
+
+		if(result == 20) {
+			const Member = message.guild.members.cache.get(message.author.id);
+			if (!Member.banable) {return;}
+			message.channel.send('User has been ban');
+			Member.ban({ days: 7, reason: 'AntiSpam' });
+		}
+	}
+	else {return;}
+});
 
 // end off events
 
