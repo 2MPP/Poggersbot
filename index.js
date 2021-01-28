@@ -198,11 +198,13 @@ setInterval(() => {
 
 client.on('message', async message => {
 	if(message.author.bot) return;
-	if (message.channel.type == "dm") return;
+	if (message.channel.type == 'dm') return;
 	if (message.member.hasPermission('ADMINISTRATOR')) return;
 	const data = await antispam.findOne({
 		GuildID: message.guild.id,
 	});
+	if(!data) return;
+
 	if(data.Enable == 'enable') {
 		userID.push(message.author.id);
 		const result = userID.filter(x => x == message.author.id).length;
