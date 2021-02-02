@@ -59,94 +59,20 @@ config({
 
 const cooldowns = new Collection();
 
-client.on('ready', async () => {
-	statcord.autopost();
-
-	const activities = [
-		{
-			'text': 'Use p! For more info',
-			'type': 'WATCHING',
-			'status': 'online',
-		},
-		{
-			'text': 'In ' + (Math.ceil(client.guilds.cache.size)) + ' servers.',
-			'type': 'PLAYING',
-			'status': 'online',
-		},
-		{
-			'text': 'Thanks for the love you all gave the bot',
-			'type': 'PLAYING',
-			'status': 'online',
-		},
-		{
-			'text': 'More economy commands coming out at some point',
-			'type': 'PLAYING',
-			'status': 'online',
-		},
-	];
-
-	setInterval(() => {
-		const activity = activities[Math.floor(Math.random() * activities.length)];
-		client.user.setPresence({ activity: { name: activity.text }, status: activity.status });
-	}, 10000);
+// event handler
+fs.readdir('./events', (err, files) => {
+	files = files.filter(f => f.endsWith('.js'));
+	files.forEach(f => {
+		const event = require(`./events/${f}`);
+		client.on(f.split('.')[0], event.bind(null, client));
+		delete require.cache[require.resolve(`./events/${f}`)];
+	});
 });
-
 
 client.on('UnhandledPromiseRejectionWarning', () => console.log());
-// start of events
-
-// dms on add server
-client.on('guildCreate', async guild => {
-
-	client.users.fetch('251428574119067648', false).then(user => {
-
-		const uwu = new MessageEmbed()
-			.setTitle('**New server UwU**')
-			.setColor('#FFC0CB')
-			.setDescription(`I was added to **${guild.name}** \n Server count is now ${client.guilds.cache.size} \n Guild id is ${guild.id} \n Server has ${guild.members.cache.size} Members`);
-		user.send(uwu);
-	});
-});
 
 
-client.on('guildDelete', async guild => {
-	client.users.fetch('251428574119067648', false).then(user => {
-		const uwu = new MessageEmbed()
-			.setTitle('**Removed**')
-			.setDescription('I was removed from **' + guild.name + `**\n Server count is now ${client.guilds.cache.size}`);
-		user.send(uwu);
 
-
-	});
-	await logs.deleteOne({ GuildID: guild.id });
-	await welcome.deleteOne({ GuildID: guild.id });
-	await prefix.deleteOne({ GuildID: guild.id });
-	await warn.deleteMany({ GuildID: guild.id });
-	await eco.deleteMany({ GuildID: guild.id });
-});
-
-
-client.on('guildCreate', async guild => {
-
-	client.users.fetch('405771597761216522', false).then(user => {
-
-		const uwu = new MessageEmbed()
-			.setTitle('**New server UwU**')
-			.setColor('#FFC0CB')
-			.setDescription(`I was added to **${guild.name}** \n Server count is now ${client.guilds.cache.size} \n Guild id is ${guild.id} \n Server has ${guild.members.cache.size} Members`);
-		user.send(uwu);
-	});
-});
-
-client.on('guildDelete', async guild => {
-	client.users.fetch('405771597761216522', false).then(user => {
-		const uwu = new MessageEmbed()
-			.setTitle('**Removed**')
-			.setDescription('I was removed from **' + guild.name + `**\n Server count is now ${client.guilds.cache.size}`);
-		user.send(uwu);
-
-	});
-});
 
 client.on('messageDelete', async message => {
 	if(message.author.bot) return;
