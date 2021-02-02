@@ -1,15 +1,11 @@
 const { MessageEmbed } = require('discord.js');
 let questions = [
  
+
     {
-      title: "What is the most spoken language?",
-      options: ["Mandarin Chinese", "Hindi", "English", "Spanish", "French"],
-      correct: 3
-    },
-    {
-      title: "What language is this bot programmed in?",
-      options: ["JavaScript", "Python", "Lua", "C#", "Java"],
-      correct: 1
+      title: "What is the most popular social media network?",
+      options: ["Reddit", "Snapchat", "Instagram", "Facebook", "YouTube"],
+      correct: 4
     }
 
 ];

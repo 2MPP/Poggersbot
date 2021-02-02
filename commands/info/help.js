@@ -32,7 +32,7 @@ function getAll(client, message) {
 		.map(cat => stripIndents`**${cat[0].toUpperCase() + cat.slice(1)}** \n${commands(cat)}`)
 		.reduce((string, category) => string + '\n' + category);
 
-	return message.reply(embed.setDescription(info));
+	return message.channel.send(embed.setDescription(info))
 }
 function getCMD(client, message, input) {
 	const embed = new MessageEmbed();
