@@ -105,7 +105,107 @@ let questions = [
      title: "What is the most popular discord bot?",
      options: ["Dyno", "MEE6", "Dank Memer", "Helper.gg", "IdleRPG", "Rythem", "Groovy", "Totally this bot"],
      correct: 2
-	  } ,
+    },
+    {
+      title: "What animal has a distinctive scent mark that smells like popcorn?",
+      options: ["Otter", "Binturong", "Badger", "Ring Tailed Lemur"],
+      correct: 2
+    },
+    {
+      title: "How many types of flamingo are there?",
+      options: ["3", "4", "5", "6"],
+      correct: 4
+    },
+    {
+      title: "Which big cat can run the fastest?",
+      options: ["Lion", "Tiger", "Leopard", "Cheetah"],
+      correct: 4
+    },
+    {
+      title: "What is a baby dolphin called?",
+      options: ["Calf", "Pup", "Kitten", "Foal"],
+      correct: 1
+    },
+    {
+      title: "What is a group of rats called?",
+      options: ["A pack", "A chaos", "A mischief", "A destruction"],
+      correct: 3
+    },
+    {
+      title: "What is the most popular pet in the UK?",
+      options: ["Cats", "Dogs", "Rabbits", "Goldfish"],
+      correct: 2
+    },
+    {
+      title: "Who was the first actor to play James Bond?",
+      options: ["George Lazenby", "Sean Connery", "Roger Moore", "Timothy Dalton"],
+      correct: 2
+    },
+    {
+      title: "How many Ice Age films have there been?",
+      options: ["2", "4", "6", "8", "10", "3"],
+      correct: 6
+    },
+    {
+      title: "What colour are the Smurfs?",
+      options: ["Red", "Yellow", "Green", "Blue", "Orange", "Purple", "None they are none existant"],
+      correct: 4
+    },
+    {
+      title: "Who plays Jack Sparrow in Pirates of the Caribbean?",
+      options: ["Orlando Bloom", "Tom Hardy", "Christ Evans", "Johnny Depp", "Spooderman"],
+      correct: 5
+    },
+    {
+      title: "When did Neil Armstrong becomes the first person to walk on the moon?",
+      options: ["1969", "1973", "1977", "1983"],
+      correct: 1
+    },
+    {
+      title: "When did Columbus 'Discover' America",
+      options: ["1201", "1492", "1575", "1699"],
+      correct: 2
+    },
+    {
+      title: "When was the Fall of the Berlin Wall?",
+      options: ["1969", "1979", "1989", "1999"],
+      correct: 3
+    },
+    {
+      title: "When did the Wright Brothers fly the first airplane?",
+      options: ["1888", "1903", "1917", "1931"],
+      correct: 1
+    },
+    {
+      title: "When did World War 1 Begin?",
+      options: ["1813", "1873", "1893", "1914"],
+      correct: 4
+    },
+    {
+      title: "When did the Japanese bomb Pearl Harbor?",
+      options: ["1929", "1939", "1941", "1945"],
+      correct: 3
+    },
+    {
+      title: "When the start of the Great Depression?",
+      options: ["1893", "1907", "1919", "1929"],
+      correct: 4
+    },
+    {
+      title: "When did the Black Plague reach Europe?",
+      options: ["799", "1230", "1045", "1347", "1501", "1720"],
+      correct: 6
+    },
+    {
+      title: "When did Napoleon's final defeat at the Battle of Waterloo?",
+      options: ["1701", "1751", "1815", "1871", "1942"],
+      correct: 3
+    },
+    {
+      title: "When did the US Civil War begin?",
+      options: ["1831", "1861", "1791", "1891", "2010"],
+      correct: 2
+    }
 
 ];
 module.exports = {
