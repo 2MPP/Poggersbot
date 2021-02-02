@@ -95,7 +95,17 @@ let questions = [
       title: "What language is this bot programmed in?",
       options: ["JavaScript", "Python", "Lua", "C#", "Java"],
       correct: 1
-    }
+    },
+    {
+      title: "What is the most popular social media network?",
+      options: ["Reddit", "Snapchat", "Instagram", "Facebook", "YouTube"],
+      correct: 4
+    },
+    {
+     title: "What is the most popular discord bot?",
+     options: ["Dyno", "MEE6", "Dank Memer", "Helper.gg", "IdleRPG", "Rythem", "Groovy", "Totally this bot"],
+     correct: 2
+	  } ,
 
 ];
 module.exports = {
