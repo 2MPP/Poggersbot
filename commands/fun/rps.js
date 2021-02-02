@@ -1,4 +1,6 @@
-const { MessageEmbed } = require('discord.js');
+const {
+	MessageEmbed
+} = require('discord.js');
 
 module.exports = {
 	name: 'rps',
@@ -23,21 +25,21 @@ module.exports = {
 		if (result === choice) return message.reply('It\'s a tie! We had the same choice.');
 
 		switch (choice) {
-		case 'rock': {
-			if (result === 'paper') return message.reply('You suck, you lose! Better luck next time :P');
-			else return message.reply('I lost. How can this be...');
-		}
-		case 'paper': {
-			if (result === 'scissors') return message.reply('You suck, you lose! Better luck next time :P');
-			else return message.reply('I lost. How can this be...');
-		}
-		case 'scissors': {
-			if (result === 'rock') return message.reply('You suck, you lose! Better luck next time :P');
-			else return message.reply('I lost. How can this be...');
-		}
-		default: {
-			return message.channel.send(`Only these responses are accepted: \`${acceptedReplies.join(', ')}\``);
-		}
+			case 'rock': {
+				if (result === 'paper') return message.reply('You suck, you lose! Better luck next time :P');
+				else return message.reply('I lost. How can this be...');
+			}
+			case 'paper': {
+				if (result === 'scissors') return message.reply('You suck, you lose! Better luck next time :P');
+				else return message.reply('I lost. How can this be...');
+			}
+			case 'scissors': {
+				if (result === 'rock') return message.reply('You suck, you lose! Better luck next time :P');
+				else return message.reply('I lost. How can this be...');
+			}
+			default: {
+				return message.channel.send(`Only these responses are accepted: \`${acceptedReplies.join(', ')}\``);
+			}
 		}
 	},
 };

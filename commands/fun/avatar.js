@@ -3,26 +3,26 @@ const Discord = require('discord.js');
 
 
 module.exports = {
-    name: "avatar",
+	name: "avatar",
 	category: "fun",
 	cooldown: 3,
-    description: "sends your mentioned user or your profile pic",
-    run: async (client, message) => {
+	description: "sends your mentioned user or your profile pic",
+	run: async (client, message) => {
 		const user = message.mentions.users.first()
 
-		if(!user) {
+		if (!user) {
 			const embed = new Discord.MessageEmbed()
-			.setImage(message.author.displayAvatarURL())
-			.setColor("RANDOM")
-			.setFooter(`This profile picture belongs to ${message.author.tag}`)
+				.setImage(message.author.displayAvatarURL())
+				.setColor("RANDOM")
+				.setFooter(`This profile picture belongs to ${message.author.tag}`)
 			message.channel.send(embed)
 		}
-		if(user) {
+		if (user) {
 			const embed = new Discord.MessageEmbed()
-			.setImage(user.displayAvatarURL())
-			.setColor("RANDOM")
-			.setFooter(`This profile picture belongs to ${user.tag}`)
-			message.channel.send(embed)	
+				.setImage(user.displayAvatarURL())
+				.setColor("RANDOM")
+				.setFooter(`This profile picture belongs to ${user.tag}`)
+			message.channel.send(embed)
 		}
-}
+	}
 }
