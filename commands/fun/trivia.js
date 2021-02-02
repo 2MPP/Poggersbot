@@ -127,6 +127,10 @@ let questionsgeneral = [{
   options: ["1969", "1973", "1977", "1983"],
   correct: 1
 },
+{
+  tutle: "What was the most expensive film?",
+  options: ["Avengers: Age of Ultron", "Avengers: Endgame", "Avengers: Infinity War", "Pirates of the Caribbean: On Stranger Tides", "Pirates of the Caribbean: At World's End", "Star Wars: The Rise of Skywalker", "Spider-Man 3"]
+}
 
 ];
 
