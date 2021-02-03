@@ -4,13 +4,8 @@ const fs = require('fs');
 const log = console.log;
 const Statcord = require('statcord.js');
 const chalk = require('chalk');
-// MongoDb models only
-const prefix = require('./models/prefix');
-const logs = require('./models/channel');
-const welcome = require('./models/welcome');
-const warn = require('./models/warn');
-const eco = require('./models/eco');
-// end of MogoDB stuff
+
+
 const client = new Client({
 	fetchAllMembers: true,
 	disableMentions: 'everyone',
@@ -71,6 +66,26 @@ fs.readdir('./events', (err, files) => {
 
 client.on('UnhandledPromiseRejectionWarning', () => console.log());
 
+
+client.on('guildMemberAdd', async member => {
+	const data = await welcome.findOne({
+		GuildID: member.guild.id,
+	});
+	if(data) {
+		const welcome2 = client.channels.cache.get(data.Channel);
+		const mkk = new MessageEmbed()
+			.setTitle('**Welcome!**\n')
+			.setColor('RANDOM')
+			.setThumbnail(member.user.avatarURL())
+			.setDescription(`welcome to **${member.guild.name}**, ${member}. \n **make sure to read the rules!**`)
+			.setTimestamp()
+			.setFooter(`Member count ${member.guild.memberCount}`);
+		welcome2.send(mkk);
+	}
+	else if(!data) {
+		return;
+	}
+});
 
 
 client.on('message', async message => {
