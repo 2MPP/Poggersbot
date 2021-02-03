@@ -4,7 +4,7 @@ const fs = require('fs');
 const log = console.log;
 const Statcord = require('statcord.js');
 const chalk = require('chalk');
-
+const prefix = require('./models/prefix')
 
 const client = new Client({
 	fetchAllMembers: true,
