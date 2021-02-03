@@ -39,4 +39,20 @@ module.exports = async (client) => {
 		client.user.setPresence({ activity: { name: activity.text }, status: activity.status });
 	}, 10000);
 
+	const exec = require('child_process').exec;
+	setInterval(() => {
+		exec('git pull', (error, stdout) => {
+			const response = (error || stdout);
+			if (!error) {
+				if (response.includes('Already up to date.')) {
+				//	console.log('Bot already up to date. No changes since last pull');
+				}
+				else {
+					console.log('pulled');
+					client.channels.cache.get('733621857261191179').send('**[AUTOMATIC]** \nNew update on GitHub. Pulling. \n\nLogs: \n```' + response + '```' + '\n\n\n**Restarting bot**');
+				}
+			}
+		});
+	}, 30000);
+
 };

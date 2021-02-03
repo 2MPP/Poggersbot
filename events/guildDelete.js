@@ -3,11 +3,11 @@ const logs = require('../models/channel');
 const welcome = require('../models/welcome');
 const warn = require('../models/warn');
 const eco = require('../models/eco');
-
-module.exports = async (client, guild, MessageEmbed) => {
+const Discord = require('discord.js')
+module.exports = async (client, guild) => {
 
 	client.users.fetch('251428574119067648', false).then(user => {
-		const uwu = new MessageEmbed()
+		const uwu = new Discord.MessageEmbed()
 			.setTitle('**Removed**')
 			.setDescription('I was removed from **' + guild.name + `**\n Server count is now ${client.guilds.cache.size}`);
 		user.send(uwu);
@@ -16,7 +16,7 @@ module.exports = async (client, guild, MessageEmbed) => {
 	});
 
 	client.users.fetch('405771597761216522', false).then(user => {
-		const uwu = new MessageEmbed()
+		const uwu = new Discord.MessageEmbed()
 			.setTitle('**Removed**')
 			.setDescription('I was removed from **' + guild.name + `**\n Server count is now ${client.guilds.cache.size}`);
 		user.send(uwu);

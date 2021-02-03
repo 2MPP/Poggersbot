@@ -73,68 +73,6 @@ client.on('UnhandledPromiseRejectionWarning', () => console.log());
 
 
 
-
-client.on('messageDelete', async message => {
-	if(message.author.bot) return;
-	const data = await logs.findOne({
-		GuildID: message.guild.id,
-	});
-
-	if(data) {
-		const loggs = client.channels.cache.get(data.Channel);
-		const Message = new MessageEmbed()
-			.setColor('36393F')
-			.setTitle(`Deleted Message | ${message.author.username}`)
-			.setDescription('**Message Content**: \n ' + message.content);
-		loggs.send(Message);
-	}
-	else if(!data) {
-		return;
-	}
-});
-
-
-client.on('guildMemberAdd', async member => {
-	const data = await welcome.findOne({
-		GuildID: member.guild.id,
-	});
-	if(data) {
-		const welcome2 = client.channels.cache.get(data.Channel);
-		const mkk = new MessageEmbed()
-			.setTitle('**Welcome!**\n')
-			.setColor('RANDOM')
-			.setThumbnail(member.user.avatarURL())
-			.setDescription(`welcome to **${member.guild.name}**, ${member}. \n **make sure to read the rules!**`)
-			.setTimestamp()
-			.setFooter(`Member count ${member.guild.memberCount}`);
-		welcome2.send(mkk);
-	}
-	else if(!data) {
-		return;
-	}
-});
-
-
-// end off events
-
-// github pull
-const exec = require('child_process').exec;
-setInterval(() => {
-	exec('git pull', (error, stdout) => {
-		const response = (error || stdout);
-		if (!error) {
-			if (response.includes('Already up to date.')) {
-			//	console.log('Bot already up to date. No changes since last pull');
-			}
-			else {
-				console.log('pulled');
-				client.channels.cache.get('733621857261191179').send('**[AUTOMATIC]** \nNew update on GitHub. Pulling. \n\nLogs: \n```' + response + '```' + '\n\n\n**Restarting bot**');
-			}
-		}
-	});
-}, 30000);
-
-
 client.on('message', async message => {
 	if (!message.guild) return;
 	if (message.author.bot) return;
