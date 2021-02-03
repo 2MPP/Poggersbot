@@ -9,7 +9,7 @@ module.exports = {
         }
 
 
-        if (!message.member.hasPermission('MANAGE_MESSAGES')&& message.author.id !== "251428574119067648") {
+        if (!message.member.hasPermission('MANAGE_MESSAGES') && message.author.id !== "251428574119067648") {
             return message.reply("You can't delete messages....").then(m => m.delete(5000));
         }
 

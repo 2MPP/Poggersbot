@@ -4,12 +4,12 @@ module.exports = {
 	category: 'bot',
 	description: 'sets bots prefix',
 	run: async (client, message, args) => {
-		
+
 		if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('You have no permissions to do that');
 		const data = await prefixModel.findOne({
 			GuildID: message.guild.id,
 		});
-		if(!args[0].length) return message.channel.send('Please specify a prefix');
+		if (!args[0].length) return message.channel.send('Please specify a prefix');
 
 		if (data) {
 			await prefixModel.findOneAndRemove({
@@ -23,8 +23,7 @@ module.exports = {
 				GuildID: message.guild.id,
 			});
 			newData.save();
-		}
-		else if (!data) {
+		} else if (!data) {
 			message.channel.send(`The new prefix is now **\`${args[0]}\`**`);
 
 			const newData = new prefixModel({

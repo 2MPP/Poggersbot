@@ -1,4 +1,6 @@
-const { MessageEmbed } = require('discord.js');
+const {
+	MessageEmbed
+} = require('discord.js');
 const ecoModdel = require('../../models/eco');
 module.exports = {
 	name: 'leaderboard',
@@ -13,12 +15,14 @@ module.exports = {
 		});
 
 
-		var Data = await ecoModdel.find().sort({ 'Money': -1 });
-		if(data) {
+		var Data = await ecoModdel.find().sort({
+			'Money': -1
+		});
+		if (data) {
 			const embed = new MessageEmbed()
 				.setColor('#0099ff')
 				.setTitle(`${message.guild.name} Server leaderboard`);
-				
+
 			for (let i = 0; i < 5; i++) {
 				await embed.addField(`No. ${i + 1}`, Data[i] ? `<@${Data[i].id}>: ${Data[i].Money}` : 'N/A');
 			}

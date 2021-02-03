@@ -14,12 +14,19 @@ module.exports = {
 
 		const stats = new Discord.MessageEmbed()
 			.setColor('#0099ff')
-			.addFields(
-				{ name: 'Cached members', value: users },
-				{ name: 'Servers', value: servers },
-				{ name: 'Ping', value: ping },
-				{ name: 'Ram Usage', value: mb + 'MB' },
-			);
+			.addFields({
+				name: 'Cached members',
+				value: users
+			}, {
+				name: 'Servers',
+				value: servers
+			}, {
+				name: 'Ping',
+				value: ping
+			}, {
+				name: 'Ram Usage',
+				value: mb + 'MB'
+			}, );
 		message.channel.send(stats);
 	},
 };

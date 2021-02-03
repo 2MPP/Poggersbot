@@ -1,6 +1,12 @@
-const { MessageEmbed } = require('discord.js');
-const { stripIndents } = require('common-tags');
-const { promptMessage } = require('../../functions.js');
+const {
+	MessageEmbed
+} = require('discord.js');
+const {
+	stripIndents
+} = require('common-tags');
+const {
+	promptMessage
+} = require('../../functions.js');
 
 module.exports = {
 	name: 'ban',
@@ -15,25 +21,37 @@ module.exports = {
 		// No args
 		if (!args[0]) {
 			return message.reply('Please provide a person to ban.')
-				.then(m => m.delete({ timeout: 5000, reason: 'Auto message timeout' }));
+				.then(m => m.delete({
+					timeout: 5000,
+					reason: 'Auto message timeout'
+				}));
 		}
 
 		// No reason
 		if (!args[1]) {
 			return message.reply('Please provide a reason to ban.')
-				.then(m => m.delete({ timeout: 5000, reason: 'Auto message timeout' }));
+				.then(m => m.delete({
+					timeout: 5000,
+					reason: 'Auto message timeout'
+				}));
 		}
 
 		// No author permissions
 		if (!message.member.hasPermission('BAN_MEMBERS') && message.author.id !== '251428574119067648') {
 			return message.reply('❌ You do not have permissions to ban members. Please contact a staff member')
-				.then(m => m.delete({ timeout: 5000, reason: 'Auto message timeout' }));
+				.then(m => m.delete({
+					timeout: 5000,
+					reason: 'Auto message timeout'
+				}));
 
 		}
 		// No bot permissions
 		if (!message.guild.me.hasPermission('BAN_MEMBERS')) {
 			return message.reply('❌ I do not have permissions to ban members. Please contact a staff member')
-				.then(m => m.delete({ timeout: 5000, reason: 'Auto message timeout' }));
+				.then(m => m.delete({
+					timeout: 5000,
+					reason: 'Auto message timeout'
+				}));
 		}
 
 		const toBan = message.mentions.members.first() || message.guild.members.cahce.get(args[0]);
@@ -41,19 +59,28 @@ module.exports = {
 		// No member found
 		if (!toBan) {
 			return message.reply('Couldn\'t find that member, try again')
-				.then(m => m.delete({ timeout: 5000, reason: 'Auto message timeout' }));
+				.then(m => m.delete({
+					timeout: 5000,
+					reason: 'Auto message timeout'
+				}));
 		}
 
 		// Can't ban urself
 		if (toBan.id === message.author.id) {
 			return message.reply('You can\'t ban yourself... thats self harm....')
-				.then(m => m.delete({ timeout: 5000, reason: 'Auto message timeout' }));
+				.then(m => m.delete({
+					timeout: 5000,
+					reason: 'Auto message timeout'
+				}));
 		}
 
 		// Check if the user's banable
 		if (!toBan.bannable) {
 			return message.reply('I can\'t ban that person due to role hierarchy, I suppose.')
-				.then(m => m.delete({ timeout: 5000, reason: 'Auto message timeout' }));
+				.then(m => m.delete({
+					timeout: 5000,
+					reason: 'Auto message timeout'
+				}));
 		}
 
 		const embed = new MessageEmbed()
@@ -61,13 +88,13 @@ module.exports = {
 			.setThumbnail(toBan.user.displayAvatarURL)
 			.setFooter(message.member.displayName, message.author.displayAvatarURL)
 			.setTimestamp()
-			.setDescription(stripIndents`**- baned member:** ${toBan} (${toBan.id})
+			.setDescription(stripIndents `**- baned member:** ${toBan} (${toBan.id})
             **- banned by:** ${message.member} (${message.member.id})
             **- Reason:** ${args.slice(1).join(' ')}`);
 
 		const fs = require('fs');
 
-		fs.writeFile(`bans/${toBan.id}.txt`, `- User "${toBan.user.tag}" Userid "${toBan.id}" \n - Banned by: "${message.member.user.tag}" "${message.member.id}" \n  - Reason: "${args.slice(1).join(' ')}" \n `, function(err) {
+		fs.writeFile(`bans/${toBan.id}.txt`, `- User "${toBan.user.tag}" Userid "${toBan.id}" \n - Banned by: "${message.member.user.tag}" "${message.member.id}" \n  - Reason: "${args.slice(1).join(' ')}" \n `, function (err) {
 			if (err) throw err;
 		});
 
@@ -92,12 +119,14 @@ module.exports = {
 					});
 
 				logChannel.send(embed);
-			}
-			else if (emoji === '❌') {
+			} else if (emoji === '❌') {
 				msg.delete();
 
 				message.reply('ban canceled.')
-					.then(m => m.delete({ timeout: 5000, reason: 'Auto message timeout' }));
+					.then(m => m.delete({
+						timeout: 5000,
+						reason: 'Auto message timeout'
+					}));
 			}
 		});
 	},

@@ -5,7 +5,7 @@ module.exports = {
 	description: 'sets bots logs',
 	run: async (client, message, args) => {
 		if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('You have no permissions to do that');
-		if(args < 1) return message.channel.send('Please say a channel');
+		if (args < 1) return message.channel.send('Please say a channel');
 		const channel = message.mentions.channels.first().id;
 		const data = await ChannelModel.findOne({
 			GuildID: message.guild.id,
@@ -23,8 +23,7 @@ module.exports = {
 				GuildID: message.guild.id,
 			});
 			newData.save();
-		}
-		else if (!data) {
+		} else if (!data) {
 			message.channel.send(`The new log channel is now **<#${channel}>**`);
 
 			const newData = new ChannelModel({

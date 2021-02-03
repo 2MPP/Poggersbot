@@ -6,7 +6,10 @@ module.exports = {
 	run: async (client, message, args) => {
 		const args2 = args.slice(0).join(' ');
 		if (args2 < 1) return message.channel.send(' <:thonk:715915147373182987> Please Say something to suggest').then(m => m.delete(5000));
-		message.channel.send('Thanks for the suggestion').then(m => m.delete({ timeout: 5000, reason: 'Auto message timeout' }));
+		message.channel.send('Thanks for the suggestion').then(m => m.delete({
+			timeout: 5000,
+			reason: 'Auto message timeout'
+		}));
 
 		const dan = new Discord.MessageEmbed()
 			.setColor('#800080')

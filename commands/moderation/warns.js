@@ -7,7 +7,7 @@ module.exports = {
 	run: async (client, message, args) => {
 		const user = message.mentions.members.first();
 
-		if(user) {
+		if (user) {
 			const data = await WarnModel.find({
 				Id: user.id,
 			});
@@ -15,8 +15,7 @@ module.exports = {
 			const x = data.length;
 
 			message.channel.send(`The user has been warned **${x}** times`);
-		}
-		else {
+		} else {
 			const data = await WarnModel.find({
 				Id: message.author.id,
 			});

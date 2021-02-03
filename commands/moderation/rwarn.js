@@ -20,8 +20,7 @@ module.exports = {
 				});
 				await warningDocument.save();
 				return message.channel.send('You can\'t delete warnings from yourself!');
-			}
-			else {
+			} else {
 				const user = await client.users.fetch(document.Id) || null;
 				return message.channel.send(`Sucessfully deleted the warning from ${user.tag}!`);
 			}

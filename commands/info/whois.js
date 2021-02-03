@@ -1,6 +1,13 @@
-const { MessageEmbed } = require('discord.js');
-const { stripIndents } = require('common-tags');
-const { getMember, formatDate } = require('../../functions.js');
+const {
+	MessageEmbed
+} = require('discord.js');
+const {
+	stripIndents
+} = require('common-tags');
+const {
+	getMember,
+	formatDate
+} = require('../../functions.js');
 
 const flags = {
 	DISCORD_EMPLOYEE: '<:staff_badge:766725403653963826> ',
@@ -43,12 +50,12 @@ module.exports = {
 			.setThumbnail(member.user.avatarURL())
 			.setColor(member.displayHexColor === '#000000' ? '#ffffff' : member.displayHexColor)
 
-			.addField('Member information:', stripIndents`**- Display name:** ${member.displayName}
+			.addField('Member information:', stripIndents `**- Display name:** ${member.displayName}
             **- Joined at:** ${joined}
             **- Roles:** ${roles}`, true)
 
 
-			.addField('User information:', stripIndents`**- ID:** ${member.user.id}
+			.addField('User information:', stripIndents `**- ID:** ${member.user.id}
             **- Username**: ${member.user.username}
             **- Tag**: ${member.user.tag}
             **- User badges**: ${UserFlags.length ? UserFlags.map(flag => flags[flag]).join(' ') : 'N/A'} 

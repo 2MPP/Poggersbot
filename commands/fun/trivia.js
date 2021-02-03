@@ -128,7 +128,7 @@ let questionsgeneral = [{
   correct: 1
 },
 {
-  tutle: "What was the most expensive film?",
+  title: "What was the most expensive film?",
   options: ["Avengers: Age of Ultron", "Avengers: Endgame", "Avengers: Infinity War", "Pirates of the Caribbean: On Stranger Tides", "Pirates of the Caribbean: At World's End", "Star Wars: The Rise of Skywalker", "Spider-Man 3"]
 }
 
@@ -138,11 +138,6 @@ let questionshistory = [{
   title: "When did the Black Plague reach Europe?",
   options: ["799", "1230", "1045", "1347", "1501", "1720"],
   correct: 6
-},
-{
-  title: "What is Sweden's capital city?",
-  options: ["Gothenburg", "Malmö", "Uppsala", "Stockholm", "Linköping"],
-  correct: 4
 },
 {
   title: "When did Columbus 'Discover' America",
@@ -270,6 +265,11 @@ let questionsgeography = [{
   title: "Which of these countries does NOT have only one border?",
   options: ["Portugal", "Ireland", "North Korea", "Haiti"],
   correct: 3
+},
+{
+  title: "What is Sweden's capital city?",
+  options: ["Gothenburg", "Malmö", "Uppsala", "Stockholm", "Linköping"],
+  correct: 4
 },
 
 ];

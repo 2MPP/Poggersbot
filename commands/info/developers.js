@@ -1,4 +1,6 @@
-const { MessageEmbed } = require('discord.js');
+const {
+	MessageEmbed
+} = require('discord.js');
 
 module.exports = {
 	name: 'developers',
@@ -13,11 +15,16 @@ module.exports = {
 		const embed = new MessageEmbed()
 			.setColor('#0099ff')
 			.setTitle('Developers')
-			.addFields(
-				{ name: 'Owner', value: mp.tag },
-				{ name: 'Co-Owner', value: cu.tag },
-				{ name: '\u200B', value: '2MP is the main developer for Poggers Bot, he has done majority of the code. \n Meanwhile, curry is open at all times for support and corrects capital letters because 2MP always forgets.' },
-			);
+			.addFields({
+				name: 'Owner',
+				value: mp.tag
+			}, {
+				name: 'Co-Owner',
+				value: cu.tag
+			}, {
+				name: '\u200B',
+				value: '2MP is the main developer for Poggers Bot, he has done majority of the code. \n Meanwhile, curry is open at all times for support and corrects capital letters because 2MP always forgets.'
+			}, );
 
 		message.channel.send(embed);
 	},

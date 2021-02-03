@@ -13,16 +13,17 @@ module.exports = {
 			_id: message.author.id,
 		});
 
-		if(data) {
+		if (data) {
 			// if user alrady has money saved
 
 			const num1 = parseInt(data.Money);
 			const num2 = parseInt(money);
 
 
-			await ecoModdel.findByIdAndUpdate(message.author.id, { Money: num1 + num2 });
-		}
-		else {
+			await ecoModdel.findByIdAndUpdate(message.author.id, {
+				Money: num1 + num2
+			});
+		} else {
 			// if user dosnt have money saved
 			const Data = new ecoModdel({
 				_id: message.author.id,

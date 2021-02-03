@@ -17,23 +17,24 @@ module.exports = {
 		var CrimeText = JobText[Math.floor(Math.random() * JobText.length)];
 		var OneOrZero = ['0', '1'];
 		var chance = OneOrZero[Math.floor(Math.random() * OneOrZero.length)];
-		
-		if(chance == 1) {
+
+		if (chance == 1) {
 			const data = await ecoModdel.findOne({
 				GuildID: message.guild.id,
 				_id: message.author,
 			});
 
-			if(data) {
+			if (data) {
 				// if user alrady has money saved
 
 				const num1 = parseInt(data.Money);
 				const num2 = parseInt(money);
 
 
-				await ecoModdel.findByIdAndUpdate(message.author.id, { Money: num1 + num2 });
-			}
-			else {
+				await ecoModdel.findByIdAndUpdate(message.author.id, {
+					Money: num1 + num2
+				});
+			} else {
 				// if user dosnt have money saved
 				const Data = new ecoModdel({
 					_id: message.author.id,
@@ -44,22 +45,22 @@ module.exports = {
 
 			}
 			message.channel.send(CrimeText);
-		}
-		else {
+		} else {
 			const data = await ecoModdel.findOne({
 				GuildID: message.guild.id,
 			});
 
-			if(data) {
+			if (data) {
 				// if user alrady has money saved
 
 				const num1 = parseInt(data.Money);
 				const num2 = parseInt(1000);
 
 
-				await ecoModdel.findByIdAndUpdate(message.author.id, { Money: num1 - num2 });
-			}
-			else {
+				await ecoModdel.findByIdAndUpdate(message.author.id, {
+					Money: num1 - num2
+				});
+			} else {
 				// if user dosnt have money saved
 				const Data = await new ecoModdel({
 					_id: message.author.id,

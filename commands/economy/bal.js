@@ -17,10 +17,9 @@ module.exports = {
 			GuildID: message.guild.id,
 		});
 
-		if(data) {
+		if (data) {
 			message.reply(`your current balance is \`\`${data.Money}\`\``);
-		}
-		else {
+		} else {
 			message.reply(`you dont have any money you can get money by using \`\`${Data.Prefix}work\`\` Or \`\`${Data.Prefix}crime\`\``);
 		}
 
