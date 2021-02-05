@@ -278,7 +278,49 @@ let questionscars = [{
   title: "Where was the first car made?",
   options: ["1992", "1842", "1886", "1883"],
   correct: 3
-}]
+},
+{
+  title: "Henry Ford started his first motro vehicle compnay in 1899. It was called the Detroit Automobile Compnay. Is this statement true or false?",
+  options: ["True", "False"],
+  correct: 1
+},
+{
+  title: "True or false? Electric cars were common in the early 1900s",
+  options: ["True", "False"],
+  correct: 1
+},
+{
+  title: "What year was the Corvette first introduced?",
+  options: ["1953", "1973", "1963", "1943"],
+  correct: 1
+},
+{
+  title: "The inventor of cruise control was ......",
+  options: ["A robot", "A blind man", "A 12 year old child", "A homeless man"],
+  correct: 2
+},
+{
+  title: "What animal is on the Porsche logo?",
+  options: ["Horse", "Bird", "Lion", "Bull"],
+  correct: 1
+},
+{
+  title: "What are special performance editions of Honda cars called?",
+  options: ["Type M", "Type A", "Type R", "Type D"],
+  correct: 3
+},
+{
+  title: "What was the Volkswagen Beetle called when it first sold in the United States?",
+  options: ["Liberty Wagon", "Victory Wagon", "Freedom Wagon", "Kraut Wagon"],
+  correct: 2
+},
+{
+  title: "What was the first production car in the world with laser headlights?",
+  options: ["BMW E12", "BMW I8", "BMW M1", "BMW Z1"],
+  correct: 2
+}
+
+]
 
 module.exports = {
 	name: 'trivia',
