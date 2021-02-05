@@ -3,6 +3,7 @@ const logs = require('../models/channel');
 const welcome = require('../models/welcome');
 const warn = require('../models/warn');
 const eco = require('../models/eco');
+const antispam = require('../models/antispam');
 const Discord = require('discord.js')
 module.exports = async (client, guild) => {
 
@@ -27,6 +28,6 @@ module.exports = async (client, guild) => {
 	await prefix.deleteOne({ GuildID: guild.id });
 	await warn.deleteMany({ GuildID: guild.id });
 	await eco.deleteMany({ GuildID: guild.id });
-
+	await antispam.deleteMany({ GuildID: guild.id });
 
 };

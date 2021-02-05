@@ -1,4 +1,4 @@
-const { Client, Collection, MessageEmbed } = require('discord.js');
+const { Client, Collection } = require('discord.js');
 const { config } = require('dotenv');
 const fs = require('fs');
 const log = console.log;
@@ -64,8 +64,49 @@ fs.readdir('./events', (err, files) => {
 	});
 });
 
+
+
 client.on('UnhandledPromiseRejectionWarning', () => console.log());
 
+var userID = [];
+
+setInterval(() => {
+	userID = [];
+}, 15000);
+
+const antispam = require('./models/antispam')
+client.on('message', async message => {
+	if(message.author.bot) return;
+	if (message.channel.type == 'dm') return;
+	if (message.member.hasPermission('ADMINISTRATOR')) return;
+	const data = await antispam.findOne({
+		GuildID: message.guild.id,
+	});
+	if(!data) return;
+
+	if(data.Enable == 'enable') {
+		userID.push(message.author.id);
+		const result = userID.filter(x => x == message.author.id).length;
+
+		if(result == 10) {
+			message.channel.send('Warning Please stop spamming');
+		}
+		if(result == 15) {
+			const Member = message.guild.members.cache.get(message.author.id);
+			if (!Member.kickable) {return;}
+			message.channel.send(`${message.author.tag} has been kicked`);
+			Member.kick('AntiSpam');
+		}
+
+		if(result == 20) {
+			const Member = message.guild.members.cache.get(message.author.id);
+			if (!Member.banable) {return;}
+			message.channel.send('User has been ban');
+			Member.ban({ days: 7, reason: 'AntiSpam' });
+		}
+	}
+	else {return;}
+});
 
 
 client.on('message', async message => {
