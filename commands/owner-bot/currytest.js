@@ -1,44 +1,37 @@
 const {
-	MessageEmbed
+  MessageEmbed
 } = require('discord.js');
 
-let questionsgeneral = [{
-
-  title: "What was the most expensive film?",
-  options: ["Avengers: Age of Ultron", "Avengers: Endgame", "Avengers: Infinity War", "Pirates of the Caribbean: On Stranger Tides", "Pirates of the Caribbean: At World's End", "Star Wars: The Rise of Skywalker", "Spider-Man 3"],
-  correct: 4
-}
-
-];
+let questionsgeneral = require('../../questions/general');
 
 
 module.exports = {
-	name: 'currytest',
-	cooldown: 3,
-	description: 'This is a test command!',
-	run: async (client, message, args) => {
+  name: 'testboi',
+  cooldown: 3,
+  description: 'This is a test command!',
+  run: async (client, message, args) => {
 
-		const embed = new MessageEmbed()
-			.setColor('#0099ff')
-			.setTitle('Triva')
-			.setDescription('<General Knowledge|History|Geography> are the only valid arguments, anything else won\'t be accepted. \n \u200B \n To utilise this command run <rps general|history|geography>');
+    const embed = new MessageEmbed()
+      .setColor('#0099ff')
+      .setTitle('Triva')
+      .setDescription('<General Knowledge|History|Geography> are the only valid arguments, anything else won\'t be accepted. \n \u200B \n To utilise this command run <rps general|history|geography>');
 
-		const acceptedReplies = ['general', 'history', 'geography'];
+    const acceptedReplies = ['general', 'history', 'geography'];
 
-		const choice = args[0];
-		if (!choice) return message.channel.send(embed);
-		if (!acceptedReplies.includes(choice)) return message.channel.send(`Only these options are accepted (More Coming soon): \`${acceptedReplies.join(', ')}\``);
+    const choice = args[0];
+    if (!choice) return message.channel.send(embed);
+    if (!acceptedReplies.includes(choice)) return message.channel.send(`Only these options are accepted (More Coming soon): \`${acceptedReplies.join(', ')}\``);
 
-		switch (choice) {
-			case 'general': {
-        let qg = questionsgeneral[Math.floor(Math.random() * questionsgeneral.length)];
-        let ig = 0;
+    switch (choice) {
+      case 'general': {
+        let q = questionsgeneral[Math.floor(Math.random() * questionsgeneral.length)];
+        let i = 0;
         const Embed = new MessageEmbed()
-          .setTitle(qg.title)
+          .setTitle(q.gen_question[2].title)
           .setDescription(
-            qg.options.map((opt) => {
-              ig++;
-              return `${ig} - ${opt}\n`;
+            q.options.map((opt) => {
+              i++;
+              return `${i} - ${opt}\n`;
             })
           )
           .setColor(`GREEN`)
@@ -50,7 +43,7 @@ module.exports = {
             max: 1,
             errors: ["time"]
           });
-          if (parseInt(msgs.first().content) == qg.correct) {
+          if (parseInt(msgs.first().content) == q.correct) {
             return message.channel.send(`You got it correct!`)
           } else {
             return message.channel.send(`You got it incorrect.`);
@@ -58,7 +51,7 @@ module.exports = {
         } catch (e) {
           return message.channel.send(`You did not answer!`);
         }
+      }
     }
-}
-}
+  }
 }

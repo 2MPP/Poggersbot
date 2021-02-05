@@ -274,18 +274,24 @@ let questionsgeography = [{
 
 ];
 
+let questionscars = [{
+  title: "Where was the first car made?",
+  options: ["1992", "1842", "1886", "1883"],
+  correct: 3
+}]
+
 module.exports = {
 	name: 'trivia',
 	cooldown: 3,
-	description: 'This is a test command!',
+	description: 'This is a trivia command!',
 	run: async (client, message, args) => {
 
 		const embed = new MessageEmbed()
 			.setColor('#0099ff')
 			.setTitle('Triva')
-			.setDescription('<General Knowledge|History|Geography> are the only valid arguments, anything else won\'t be accepted. \n \u200B \n To utilise this command run <rps general|history|geography>');
+			.setDescription('<General Knowledge|History|Geography|Cars> are the only valid arguments, anything else won\'t be accepted. \n \u200B \n To utilise this command run <rps general|history|geography|cars>');
 
-		const acceptedReplies = ['general', 'history', 'geography'];
+		const acceptedReplies = ['general', 'history', 'geography', 'cars'];
 
 		const choice = args[0];
 		if (!choice) return message.channel.send(embed);
@@ -379,10 +385,36 @@ module.exports = {
         } catch (e) {
           return message.channel.send(`You did not answer!`);
     };
-			}
-			default: {
-				return message.channel.send(`Only these responses are accepted: \`${acceptedReplies.join(', ')}\``);
-			}
+      }
+      case 'cars': {
+				let qcar = questionscars[Math.floor(Math.random() * questionscars.length)];
+        let icar = 0;
+        const Embed = new MessageEmbed()
+          .setTitle(qcar.title)
+          .setDescription(
+            qcar.options.map((opt) => {
+              icar++;
+              return `${icar} - ${opt}\n`;
+            })
+          )
+          .setColor(`GREEN`)
+          .setFooter(`Reply to this message with the correct question number! You have 15 seconds.`);
+        message.channel.send(Embed);
+        try {
+          let msgs = await message.channel.awaitMessages((u2) => u2.author.id === message.author.id, {
+            time: 15000,
+            max: 1,
+            errors: ["time"]
+          });
+          if (parseInt(msgs.first().content) == qcar.correct) {
+            return message.channel.send(`You got it correct!`)
+          } else {
+            return message.channel.send(`You got it incorrect.`);
+          }
+        } catch (e) {
+          return message.channel.send(`You did not answer!`);
+    };
+  }
 		}
   }
 };
