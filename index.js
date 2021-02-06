@@ -65,7 +65,6 @@ fs.readdir('./events', (err, files) => {
 });
 
 
-
 client.on('UnhandledPromiseRejectionWarning', () => console.log());
 
 var userID = [];

@@ -1,8 +1,8 @@
 const {
-	MessageEmbed
+	MessageEmbed,
 } = require('discord.js');
 const {
-	stripIndents
+	stripIndents,
 } = require('common-tags');
 
 module.exports = {
@@ -14,7 +14,8 @@ module.exports = {
 	run: async (client, message, args) => {
 		if (args[0]) {
 			return getCMD(client, message, args[0]);
-		} else {
+		}
+		else {
 			return getAll(client, message);
 		}
 	},
@@ -35,7 +36,10 @@ function getAll(client, message) {
 		.map(cat => stripIndents `**${cat[0].toUpperCase() + cat.slice(1)}** \n${commands(cat)}`)
 		.reduce((string, category) => string + '\n' + category);
 
-	return message.channel.send(embed.setDescription(info))
+	return message.channel.send(embed.setDescription(info).addFields(
+		{ name: '\u200b', value: '[Support Server](https://discord.gg/xGTPQAGq)' },
+	));
+
 }
 
 function getCMD(client, message, input) {
