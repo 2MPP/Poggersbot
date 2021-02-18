@@ -1,6 +1,5 @@
 const MessageEmbed = require('discord.js');
 const ecoModdel = require('../../models/eco');
-const { loadImage, createCanvas } = require('canvas');
 module.exports = {
 	name: 'leaderboard',
 	aliases: ['lb'],
