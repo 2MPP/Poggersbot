@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@discordjs/opus": "^0.4.0",
     "ascii-table": "0.0.9",
     "chalk": "^4.1.0",
     "common-tags": "^1.8.0",
+    "discord-tts": "^1.0.3",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "erela.js": "^2.3.0",

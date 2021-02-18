@@ -37,7 +37,7 @@ function getAll(client, message) {
 		.reduce((string, category) => string + '\n' + category);
 
 	return message.channel.send(embed.setDescription(info).addFields(
-		{ name: '\u200b', value: '[Support Server](https://discord.gg/xGTPQAGq)' },
+		{ name: '\u200b', value: '[Support Server](https://discord.gg/qebvYvBtnv)' },
 	));
 
 }
