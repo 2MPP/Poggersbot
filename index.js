@@ -223,9 +223,9 @@ client.on('message', async message => {
 
 	const nodes = [
 		{
-			host: 'antifurry-lavalink.herokuapp.com',
-			password: 'AntiFurry',
-			port: 80,
+			host: 'lava2.danbot.host',
+			password: 'DBH',
+			port: 2333,
 			retryAmount: 280,
 			retryDelay: 30e3,
 		},
