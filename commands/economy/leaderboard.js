@@ -15,7 +15,7 @@ module.exports = {
 		}).sort({
 			'Money': -1
 		});
-
+		console.log(data)
 
 		if (data) {
 			const embed = new MessageEmbed()

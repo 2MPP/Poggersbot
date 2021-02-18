@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const ecoSchema = new mongoose.Schema({
 	_id: { type: String },
-	Money: { type: String },
+	Money: { type: Number },
 	GuildID: { type: String },
 });
 
