@@ -6,7 +6,6 @@
   "dependencies": {
     "@discordjs/opus": "^0.4.0",
     "ascii-table": "0.0.9",
-    "canvas": "^2.6.1",
     "chalk": "^4.1.0",
     "common-tags": "^1.8.0",
     "discord-tts": "^1.0.3",
