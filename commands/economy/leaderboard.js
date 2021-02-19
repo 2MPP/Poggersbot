@@ -1,4 +1,4 @@
-const MessageEmbed = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const ecoModdel = require('../../models/eco');
 module.exports = {
 	name: 'leaderboard',
