@@ -49,7 +49,7 @@ module.exports = async (client) => {
 				}
 				else {
 					console.log('pulled');
-					client.channels.cache.get('733621857261191179').send('**[AUTOMATIC]** \nNew update on GitHub. Pulling. \n\nLogs: \n```' + response + '```' + '\n\n\n**Restarting bot**');
+					client.channels.cache.get('733621857261191179').send('changes to the github detected \`\`\`\n' + response + '\n\n\`\`\` make sure to restart the bot' );
 				}
 			}
 		});
