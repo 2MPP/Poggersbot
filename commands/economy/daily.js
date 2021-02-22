@@ -21,9 +21,10 @@ module.exports = {
 
 
 			await ecoModdel.findByIdAndUpdate(message.author.id, {
-				Money: num1 + num2
+				Money: num1 + num2,
 			});
-		} else {
+		}
+		else {
 			// if user dosnt have money saved
 			const Data = new ecoModdel({
 				_id: message.author.id,

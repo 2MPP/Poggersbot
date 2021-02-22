@@ -8,7 +8,7 @@ module.exports = async (client) => {
 		postCpuStatistics: true,
 		postMemStatistics: true,
 		postNetworkStatistics: true,
-    });
+	});
 	statcord.autopost();
 
 	const activities = [
@@ -49,7 +49,7 @@ module.exports = async (client) => {
 				}
 				else {
 					console.log('pulled');
-					client.channels.cache.get('733621857261191179').send('changes to the github detected \`\`\`\n' + response + '\n\n\`\`\` make sure to restart the bot' );
+					client.channels.cache.get('733621857261191179').send('changes to the github detected \`\`\`\n' + response + '\n\n\`\`\` make sure to restart the bot');
 				}
 			}
 		});

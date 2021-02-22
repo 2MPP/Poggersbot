@@ -226,7 +226,7 @@ client.on('message', async message => {
 			host: 'lava2.danbot.host',
 			password: 'DBH',
 			port: 2333,
-			retryAmount: 280,
+			retryAmount: -1,
 			retryDelay: 30e3,
 		},
 	];
