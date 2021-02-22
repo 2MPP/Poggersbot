@@ -1,11 +1,11 @@
 const {
-	MessageEmbed
+	MessageEmbed,
 } = require('discord.js');
 const {
-	stripIndents
+	stripIndents,
 } = require('common-tags');
 const {
-	promptMessage
+	promptMessage,
 } = require('../../functions.js');
 
 module.exports = {
@@ -23,7 +23,7 @@ module.exports = {
 			return message.reply('Please provide a person to ban.')
 				.then(m => m.delete({
 					timeout: 5000,
-					reason: 'Auto message timeout'
+					reason: 'Auto message timeout',
 				}));
 		}
 
@@ -32,7 +32,7 @@ module.exports = {
 			return message.reply('Please provide a reason to ban.')
 				.then(m => m.delete({
 					timeout: 5000,
-					reason: 'Auto message timeout'
+					reason: 'Auto message timeout',
 				}));
 		}
 
@@ -41,7 +41,7 @@ module.exports = {
 			return message.reply('❌ You do not have permissions to ban members. Please contact a staff member')
 				.then(m => m.delete({
 					timeout: 5000,
-					reason: 'Auto message timeout'
+					reason: 'Auto message timeout',
 				}));
 
 		}
@@ -50,7 +50,7 @@ module.exports = {
 			return message.reply('❌ I do not have permissions to ban members. Please contact a staff member')
 				.then(m => m.delete({
 					timeout: 5000,
-					reason: 'Auto message timeout'
+					reason: 'Auto message timeout',
 				}));
 		}
 
@@ -61,7 +61,7 @@ module.exports = {
 			return message.reply('Couldn\'t find that member, try again')
 				.then(m => m.delete({
 					timeout: 5000,
-					reason: 'Auto message timeout'
+					reason: 'Auto message timeout',
 				}));
 		}
 
@@ -70,7 +70,7 @@ module.exports = {
 			return message.reply('You can\'t ban yourself... thats self harm....')
 				.then(m => m.delete({
 					timeout: 5000,
-					reason: 'Auto message timeout'
+					reason: 'Auto message timeout',
 				}));
 		}
 
@@ -79,7 +79,7 @@ module.exports = {
 			return message.reply('I can\'t ban that person due to role hierarchy, I suppose.')
 				.then(m => m.delete({
 					timeout: 5000,
-					reason: 'Auto message timeout'
+					reason: 'Auto message timeout',
 				}));
 		}
 
@@ -94,7 +94,7 @@ module.exports = {
 
 		const fs = require('fs');
 
-		fs.writeFile(`bans/${toBan.id}.txt`, `- User "${toBan.user.tag}" Userid "${toBan.id}" \n - Banned by: "${message.member.user.tag}" "${message.member.id}" \n  - Reason: "${args.slice(1).join(' ')}" \n `, function (err) {
+		fs.writeFile(`bans/${toBan.id}.txt`, `- User "${toBan.user.tag}" Userid "${toBan.id}" \n - Banned by: "${message.member.user.tag}" "${message.member.id}" \n  - Reason: "${args.slice(1).join(' ')}" \n `, function(err) {
 			if (err) throw err;
 		});
 
@@ -119,13 +119,14 @@ module.exports = {
 					});
 
 				logChannel.send(embed);
-			} else if (emoji === '❌') {
+			}
+			else if (emoji === '❌') {
 				msg.delete();
 
 				message.reply('ban canceled.')
 					.then(m => m.delete({
 						timeout: 5000,
-						reason: 'Auto message timeout'
+						reason: 'Auto message timeout',
 					}));
 			}
 		});
