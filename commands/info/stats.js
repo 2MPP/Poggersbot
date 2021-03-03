@@ -26,7 +26,12 @@ module.exports = {
 			}, {
 				name: 'Ram Usage',
 				value: mb + 'MB'
-			}, );
+			}, 
+			//{
+			//	name: 'Uptime',
+			//	value: client.uptime + 'ms' + ' ' + 'Might have done something correct...'
+			//},  
+			);
 		message.channel.send(stats);
 	},
 };

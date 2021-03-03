@@ -129,8 +129,9 @@ let questionsgeneral = [{
 },
 {
   title: "What was the most expensive film?",
-  options: ["Avengers: Age of Ultron", "Avengers: Endgame", "Avengers: Infinity War", "Pirates of the Caribbean: On Stranger Tides", "Pirates of the Caribbean: At World's End", "Star Wars: The Rise of Skywalker", "Spider-Man 3"]
-}
+  options: ["Avengers: Age of Ultron", "Avengers: Endgame", "Avengers: Infinity War", "Pirates of the Caribbean: On Stranger Tides", "Pirates of the Caribbean: At World's End", "Star Wars: The Rise of Skywalker", "Spider-Man 3"],
+  correct: 4
+},
 
 ];
 
@@ -330,7 +331,7 @@ module.exports = {
 
 		const embed = new MessageEmbed()
 			.setColor('#0099ff')
-			.setTitle('Triva')
+			.setTitle('Triva') 
 			.setDescription('<General Knowledge|History|Geography|Cars> are the only valid arguments, anything else won\'t be accepted. \n \u200B \n To utilise this command run <rps general|history|geography|cars>');
 
 		const acceptedReplies = ['general', 'history', 'geography', 'cars'];
@@ -377,14 +378,14 @@ module.exports = {
           .setTitle(qh.title)
           .setDescription(
             qh.options.map((opt) => {
-              ih++;
+              ih++; 
               return `${ih} - ${opt}\n`;
             })
           )
           .setColor(`GREEN`)
           .setFooter(`Reply to this message with the correct question number! You have 15 seconds.`);
         message.channel.send(Embed);
-        try {
+        try { 
           let msgs = await message.channel.awaitMessages((u2) => u2.author.id === message.author.id, {
             time: 15000,
             max: 1,

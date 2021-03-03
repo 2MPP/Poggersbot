@@ -40,7 +40,7 @@ module.exports = {
 			const Message = new Discord.MessageEmbed()
 
 				.setColor('#FF0000')
-				.setTitle(`New report (UUID ${uuid} )`)
+				.setTitle(`New Warned User (UUID ${uuid} )`)
 				.addFields({
 					name: 'Warned user',
 					value: ToWarn
