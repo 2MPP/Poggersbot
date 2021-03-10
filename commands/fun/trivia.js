@@ -38,21 +38,6 @@ let questionsgeneral = [{
   correct: 2
 },
 {
-  title: "When did Minecraft come out?",
-  options: ["2005", "2006", "2008", "2007", "2009", "2010"],
-  correct: 5
-},
-{
-  title: "When did Roblox come out?",
-  options: ["2005", "2006", "2008", "2007", "2009", "2010"],
-  correct: 2
-},
-{
-  title: "What is the best selling game?",
-  options: ["Tetris", "Wii Sports", "PlayerUnknown's Battlegrounds", "Minecraft", "Grand Theft Auto V", "Super Mario Bros", "Wii Sports Resort", "Pac-Man"],
-  correct: 4
-},
-{
   title: "What is the most followed Twitch channel?",
   options: ["Pokimane", "Ninja", "Tfue", "Minecraft", "Shroud", "Myth", "DrLupo", "Riot Games"],
   correct: 2
@@ -323,6 +308,58 @@ let questionscars = [{
 
 ]
 
+let questionsgame = [{
+    title: "When did Minecraft come out?",
+    options: ["2005", "2006", "2008", "2007", "2009", "2010"],
+    correct: 5
+  },
+  {
+    title: "When did Roblox come out?",
+    options: ["2005", "2006", "2008", "2007", "2009", "2010"],
+    correct: 2
+  },
+  {
+    title: "What is the best selling game?",
+    options: ["Tetris", "Wii Sports", "PlayerUnknown's Battlegrounds", "Minecraft", "Grand Theft Auto V", "Super Mario Bros", "Wii Sports Resort", "Pac-Man"],
+    correct: 4
+  },
+  {
+    title: "Most played mobile game by download? (2016)",
+    options: ["Pokemon GO", "Puano Tiles 2", "My Talking Tom", "Clash Royale", "Subway Surfers"],
+    correct: 1
+  },
+  {
+    title: "Which of the following consoles was released by 'Sega'?",
+    options: ["Zodiac", "Dreamcast", "Gamecube", "Jaguar"],
+    correct: 2
+  },
+  {
+    title: "Which game in the 'Final Fantasy' franchise was the first to spawn a direct sequel?",
+    options: ["Final Fantasy X", "Final Fantasy V", "Final Fantasy VII", "Final Fantasy XII"],
+    correct: 1
+  },
+  {
+    title: "Under what name did Mario debut 1981's 'Donkey Kong'?",
+    options: ["Plumberman", "Jumperman", "Mario", "Luigi"],
+    correct: 2
+  },
+  {
+    title: "Which of the following is NOT a ghost from the original Pac-Man?",
+    options: ["Winky", "Clyde", "Blinky", "Inky"],
+    correct: 1
+  },
+  {
+    title: "What year was Grand Theft Auto V first released?",
+    options: ["2014", "2012", "2013", "2015"],
+    correct: 3
+  },
+  {
+    title: "Which oif the following names is NOT a main character in Detroit: Become Human?",
+    options: ["Kara", "Markus", "James", "Connor"],
+    correct: 3
+  }
+]
+
 module.exports = {
 	name: 'trivia',
 	cooldown: 3,
@@ -332,13 +369,13 @@ module.exports = {
 		const embed = new MessageEmbed()
 			.setColor('#0099ff')
 			.setTitle('Triva') 
-			.setDescription('<General Knowledge|History|Geography|Cars> are the only valid arguments, anything else won\'t be accepted. \n \u200B \n To utilise this command run <rps general|history|geography|cars>');
+			.setDescription('To utilise this command run, "rps general" or any of the other options available');
 
-		const acceptedReplies = ['general', 'history', 'geography', 'cars'];
+		const acceptedReplies = ['general', 'history', 'geography', 'cars', 'games'];
 
 		const choice = args[0];
 		if (!choice) return message.channel.send(embed);
-		if (!acceptedReplies.includes(choice)) return message.channel.send(`Only these options are accepted (More Coming soon): \`${acceptedReplies.join(', ')}\``);
+		if (!acceptedReplies.includes(choice)) return message.channel.send(`Only these options are accepted (More Coming soon) - "Games" catergory is coming soon!: \`${acceptedReplies.join(', ')}\``);
 
 		switch (choice) {
 			case 'general': {
@@ -458,6 +495,39 @@ module.exports = {
           return message.channel.send(`You did not answer!`);
     };
   }
+
+      case 'games': {
+        let qgame = questionsgame[Math.floor(Math.random() * questionsgame.length)];
+        let igame = 0;
+        const Embed = new MessageEmbed()
+          .setTitle(qgame.title)
+          .setDescription(
+            qgame.options.map((opt) => {
+              igame++;
+              return `${igame} - ${opt}\n`;
+            })
+          )
+          .setColor(`GREEN`)
+          .setFooter(`Reply to this message with the correct question number¬ You have 15 seconds.`);
+        message.channel.send(Embed);
+        try {
+          let msgs = await message.channel.awaitMessages((u2) => u2.author.id === message.author.id, {
+            time: 15000,
+            max: 1,
+            errors: ["time"]
+          });
+          if (parseInt(msgs.first().content) == qgame.correct) {
+            return message.channel.send(`You got it correct!`)
+          } else {
+            return message.channel.send(`You got it incorrect.`);
+          }
+        } catch (e) {
+          return message.channel.send(`You did not answer!`);
+        }
+      }
+  
 		}
+    
   }
+  
 };

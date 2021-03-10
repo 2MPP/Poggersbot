@@ -2,8 +2,6 @@ const {
   MessageEmbed
 } = require('discord.js');
 
-let questionsgeneral = require('../../questions/general');
-
 
 module.exports = {
   name: 'testboi',

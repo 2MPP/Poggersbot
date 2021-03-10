@@ -29,7 +29,7 @@ module.exports = {
 			}, 
 			//{
 			//	name: 'Uptime',
-			//	value: client.uptime + 'ms' + ' ' + 'Might have done something correct...'
+			//	value: client.uptime + 'ms'
 			//},  
 			);
 		message.channel.send(stats);
