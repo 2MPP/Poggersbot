@@ -277,7 +277,7 @@ let questionscars = [{
   correct: 3
 },
 {
-  title: "Henry Ford started his first motro vehicle compnay in 1899. It was called the Detroit Automobile Compnay. Is this statement true or false?",
+  title: "Henry Ford started his first motro vehicle company in 1899. It was called the Detroit Automobile Compnay. Is this statement true or false?",
   options: ["True", "False"],
   correct: 1
 },
@@ -412,9 +412,9 @@ module.exports = {
 		const embed = new MessageEmbed()
 			.setColor('#0099ff')
 			.setTitle('Triva') 
-			.setDescription('To utilise this command run, "rps general" or any of the other options available');
+			.setDescription('To utilise this command run, "triva general" or any of the other options available');
 
-		const acceptedReplies = ['general', 'history', 'geography', 'games'/*, 'cars' */]; 
+		const acceptedReplies = ['general', 'history', 'geography', 'games', 'cars']; 
 
 		const choice = args[0];
 		if (!choice) return message.channel.send(embed);
