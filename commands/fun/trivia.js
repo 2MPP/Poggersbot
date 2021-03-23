@@ -33,16 +33,6 @@ let questionsgeneral = [{
   correct: 1
 },
 {
-  title: "Which youtube channel has the most subscribers?",
-  options: ["WWE", "T-Series", "PewDiePie", "MrBeast", "Dude Perfect"],
-  correct: 2
-},
-{
-  title: "What is the most followed Twitch channel?",
-  options: ["Pokimane", "Ninja", "Tfue", "Minecraft", "Shroud", "Myth", "DrLupo", "Riot Games"],
-  correct: 2
-},
-{
   title: "What is the most spoken language?",
   options: ["Mandarin Chinese", "Hindi", "English", "Spanish", "French"],
   correct: 3
@@ -260,53 +250,53 @@ let questionsgeography = [{
 
 ];
 
-let questionscars = [{
-  title: "Where was the first car made?",
-  options: ["1992", "1842", "1886", "1883"],
-  correct: 3
-},
-{
-  title: "Henry Ford started his first motro vehicle compnay in 1899. It was called the Detroit Automobile Compnay. Is this statement true or false?",
-  options: ["True", "False"],
-  correct: 1
-},
-{
-  title: "True or false? Electric cars were common in the early 1900s",
-  options: ["True", "False"],
-  correct: 1
-},
-{
-  title: "What year was the Corvette first introduced?",
-  options: ["1953", "1973", "1963", "1943"],
-  correct: 1
-},
-{
-  title: "The inventor of cruise control was ......",
-  options: ["A robot", "A blind man", "A 12 year old child", "A homeless man"],
-  correct: 2
-},
-{
-  title: "What animal is on the Porsche logo?",
-  options: ["Horse", "Bird", "Lion", "Bull"],
-  correct: 1
-},
-{
-  title: "What are special performance editions of Honda cars called?",
-  options: ["Type M", "Type A", "Type R", "Type D"],
-  correct: 3
-},
-{
-  title: "What was the Volkswagen Beetle called when it first sold in the United States?",
-  options: ["Liberty Wagon", "Victory Wagon", "Freedom Wagon", "Kraut Wagon"],
-  correct: 2
-},
-{
-  title: "What was the first production car in the world with laser headlights?",
-  options: ["BMW E12", "BMW I8", "BMW M1", "BMW Z1"],
-  correct: 2
-}
+//let questionscars = [{
+//  title: "Where was the first car made?",
+//  options: ["1992", "1842", "1886", "1883"],
+//  correct: 3
+//},
+//{
+//  title: "Henry Ford started his first motro vehicle compnay in 1899. It was called the Detroit Automobile Compnay. Is this statement true or false?",
+//  options: ["True", "False"],
+//  correct: 1
+//},
+//{
+//  title: "True or false? Electric cars were common in the early 1900s",
+//  options: ["True", "False"],
+//  correct: 1
+//},
+//{
+//  title: "What year was the Corvette first introduced?",
+//  options: ["1953", "1973", "1963", "1943"],
+//  correct: 1
+//},
+//{
+//  title: "The inventor of cruise control was",
+//  options: ["A robot", "A blind man", "A 12 year old child", "A homeless man"],
+//  correct: 2
+//},
+//{
+//  title: "What animal is on the Porsche logo?",
+//  options: ["Horse", "Bird", "Lion", "Bull"],
+//  correct: 1
+//},
+//{
+//  title: "What are special performance editions of Honda cars called?",
+//  options: ["Type M", "Type A", "Type R", "Type D"],
+//  correct: 3
+//},
+//{
+//  title: "What was the Volkswagen Beetle called when it first sold in the United States?",
+//  options: ["Liberty Wagon", "Victory Wagon", "Freedom Wagon", "Kraut Wagon"],
+//  correct: 2
+//},
+//{
+//  title: "What was the first production car in the world with laser headlights?",
+//  options: ["BMW E12", "BMW I8", "BMW M1", "BMW Z1"],
+//  correct: 2
+//}
 
-]
+//]
 
 let questionsgame = [{
     title: "When did Minecraft come out?",
@@ -357,6 +347,16 @@ let questionsgame = [{
     title: "Which oif the following names is NOT a main character in Detroit: Become Human?",
     options: ["Kara", "Markus", "James", "Connor"],
     correct: 3
+  },
+  {
+    title: "Which youtube channel has the most subscribers?",
+    options: ["WWE", "T-Series", "PewDiePie", "MrBeast", "Dude Perfect"],
+    correct: 2
+  },
+  {
+    title: "What is the most followed Twitch channel?",
+    options: ["Pokimane", "Ninja", "Tfue", "Minecraft", "Shroud", "Myth", "DrLupo", "Riot Games"],
+    correct: 2
   }
 ]
 
@@ -371,11 +371,11 @@ module.exports = {
 			.setTitle('Triva') 
 			.setDescription('To utilise this command run, "rps general" or any of the other options available');
 
-		const acceptedReplies = ['general', 'history', 'geography', 'cars', 'games'];
+		const acceptedReplies = ['general', 'history', 'geography', 'games']; //, 'cars'
 
 		const choice = args[0];
 		if (!choice) return message.channel.send(embed);
-		if (!acceptedReplies.includes(choice)) return message.channel.send(`Only these options are accepted (More Coming soon) - "Games" catergory is coming soon!: \`${acceptedReplies.join(', ')}\``);
+		if (!acceptedReplies.includes(choice)) return message.channel.send(`Only these options are accepted (More Coming soon): \`${acceptedReplies.join(', ')}\``);
 
 		switch (choice) {
 			case 'general': {
@@ -466,35 +466,35 @@ module.exports = {
           return message.channel.send(`You did not answer!`);
     };
       }
-      case 'cars': {
-				let qcar = questionscars[Math.floor(Math.random() * questionscars.length)];
-        let icar = 0;
-        const Embed = new MessageEmbed()
-          .setTitle(qcar.title)
-          .setDescription(
-            qcar.options.map((opt) => {
-              icar++;
-              return `${icar} - ${opt}\n`;
-            })
-          )
-          .setColor(`GREEN`)
-          .setFooter(`Reply to this message with the correct question number! You have 15 seconds.`);
-        message.channel.send(Embed);
-        try {
-          let msgs = await message.channel.awaitMessages((u2) => u2.author.id === message.author.id, {
-            time: 15000,
-            max: 1,
-            errors: ["time"]
-          });
-          if (parseInt(msgs.first().content) == qcar.correct) {
-            return message.channel.send(`You got it correct!`)
-          } else {
-            return message.channel.send(`You got it incorrect.`);
-          }
-        } catch (e) {
-          return message.channel.send(`You did not answer!`);
-    };
-  }
+//      case 'cars': {
+//				let qcar = questionscars[Math.floor(Math.random() * questionscars.length)];
+//        let icar = 0;
+//        const Embed = new MessageEmbed()
+//          .setTitle(qcar.title)
+//          .setDescription(
+//            qcar.options.map((opt) => {
+//              icar++;
+//            return `${icar} - ${opt}\n`;
+//            })
+//          )
+//          .setColor(`GREEN`)
+//          .setFooter(`Reply to this message with the correct question number! You have 15 seconds.`);
+//        message.channel.send(Embed);
+//        try {
+//          let msgs = await message.channel.awaitMessages((u2) => u2.author.id === message.author.id, {
+//            time: 15000,
+//            max: 1,
+//            errors: ["time"]
+//          });
+//          if (parseInt(msgs.first().content) == qcar.correct) {
+//            return message.channel.send(`You got it correct!`)
+//          } else {
+//            return message.channel.send(`You got it incorrect.`);
+//          }
+//        } catch (e) {
+//          return message.channel.send(`You did not answer!`);
+//    };
+//  }
 
       case 'games': {
         let qgame = questionsgame[Math.floor(Math.random() * questionsgame.length)];
