@@ -261,57 +261,85 @@ let questionsgeography = [{
   title: "What is the tallest mountain in the world?",
   options: ["K2", "Makula", "Mount Everest", "Ananga Parbat"],
   correct: 3
-}
+},
+{
+  title: "What country has the highest population?",
+  options: ["India", "China", "United States", "Indonesia", "Pakistan", "Nigeria"],
+  correct: 2
+},
 
 ];
 
-//let questionscars = [{
-//  title: "Where was the first car made?",
-//  options: ["1992", "1842", "1886", "1883"],
-//  correct: 3
-//},
-//{
-//  title: "Henry Ford started his first motro vehicle compnay in 1899. It was called the Detroit Automobile Compnay. Is this statement true or false?",
-//  options: ["True", "False"],
-//  correct: 1
-//},
-//{
-//  title: "True or false? Electric cars were common in the early 1900s",
-//  options: ["True", "False"],
-//  correct: 1
-//},
-//{
-//  title: "What year was the Corvette first introduced?",
-//  options: ["1953", "1973", "1963", "1943"],
-//  correct: 1
-//},
-//{
-//  title: "The inventor of cruise control was",
-//  options: ["A robot", "A blind man", "A 12 year old child", "A homeless man"],
-//  correct: 2
-//},
-//{
-//  title: "What animal is on the Porsche logo?",
-//  options: ["Horse", "Bird", "Lion", "Bull"],
-//  correct: 1
-//},
-//{
-//  title: "What are special performance editions of Honda cars called?",
-//  options: ["Type M", "Type A", "Type R", "Type D"],
-//  correct: 3
-//},
-//{
-//  title: "What was the Volkswagen Beetle called when it first sold in the United States?",
-//  options: ["Liberty Wagon", "Victory Wagon", "Freedom Wagon", "Kraut Wagon"],
-//  correct: 2
-//},
-//{
-//  title: "What was the first production car in the world with laser headlights?",
-//  options: ["BMW E12", "BMW I8", "BMW M1", "BMW Z1"],
-//  correct: 2
-//}
 
-//]
+let questionscars = [{
+  title: "Where was the first car made?",
+  options: ["1992", "1842", "1886", "1883"],
+  correct: 3
+},
+{
+  title: "Henry Ford started his first motro vehicle compnay in 1899. It was called the Detroit Automobile Compnay. Is this statement true or false?",
+  options: ["True", "False"],
+  correct: 1
+},
+{
+  title: "True or false? Electric cars were common in the early 1900s",
+  options: ["True", "False"],
+  correct: 1
+},
+{
+  title: "What year was the Corvette first introduced?",
+  options: ["1953", "1973", "1963", "1943"],
+  correct: 1
+},
+{
+  title: "The inventor of cruise control was",
+  options: ["A robot", "A blind man", "A 12 year old child", "A homeless man"],
+  correct: 2
+},
+{
+  title: "What animal is on the Porsche logo?",
+  options: ["Horse", "Bird", "Lion", "Bull"],
+  correct: 1
+},
+{
+  title: "What are special performance editions of Honda cars called?",
+  options: ["Type M", "Type A", "Type R", "Type D"],
+  correct: 3
+},
+{
+  title: "What was the Volkswagen Beetle called when it first sold in the United States?",
+  options: ["Liberty Wagon", "Victory Wagon", "Freedom Wagon", "Kraut Wagon"],
+  correct: 2
+},
+{
+  title: "What was the first production car in the world with laser headlights?",
+  options: ["BMW E12", "BMW I8", "BMW M1", "BMW Z1"],
+  correct: 2
+},
+{
+  title: "What is the most expensive car?",
+  options: ["Rolls-Royce Sweptail", "Bugatti Veyron Chiron", "Lamborghini Veneno Roadster", "Bugatti La Voiture Noire", "Koenigsegg CCXR Trevita", "Lykan Hypersport"],
+  correct: 4
+},
+{
+  title: "What is the fastest car in the world?",
+  options: ["SSC Tuatara", "Bugatti Chiron Supersport", "Lamborghini Aventador SVJ", "Audi R8", "Nissan GTR"],
+  correct: 2
+},
+{
+  title: "What is the slowest car in the world?",
+  options: ["Peel P50", "Aixam Coupe", "Renault Twizy", "Mia Electric Car", "Hindustan Ambassador 1.5 DSZ"],
+  correct: 1
+},
+{
+  title: "What is the most bought car?",
+  options: ["Volkswagen Beetle", "Ford Model T", "Toyota Corolla", "Ford F-Series", "Chevy Silverado"],
+  correct: 3
+}
+
+]
+
+
 
 let questionsgame = [{
     title: "When did Minecraft come out?",
@@ -386,7 +414,7 @@ module.exports = {
 			.setTitle('Triva') 
 			.setDescription('To utilise this command run, "rps general" or any of the other options available');
 
-		const acceptedReplies = ['general', 'history', 'geography', 'games']; //, 'cars'
+		const acceptedReplies = ['general', 'history', 'geography', 'games'/*, 'cars' */]; 
 
 		const choice = args[0];
 		if (!choice) return message.channel.send(embed);
@@ -481,35 +509,39 @@ module.exports = {
           return message.channel.send(`You did not answer!`);
     };
       }
-//      case 'cars': {
-//				let qcar = questionscars[Math.floor(Math.random() * questionscars.length)];
-//        let icar = 0;
-//        const Embed = new MessageEmbed()
-//          .setTitle(qcar.title)
-//          .setDescription(
-//            qcar.options.map((opt) => {
-//              icar++;
-//            return `${icar} - ${opt}\n`;
-//            })
-//          )
-//          .setColor(`GREEN`)
-//          .setFooter(`Reply to this message with the correct question number! You have 15 seconds.`);
-//        message.channel.send(Embed);
-//        try {
-//          let msgs = await message.channel.awaitMessages((u2) => u2.author.id === message.author.id, {
-//            time: 15000,
-//            max: 1,
-//            errors: ["time"]
-//          });
-//          if (parseInt(msgs.first().content) == qcar.correct) {
-//            return message.channel.send(`You got it correct!`)
-//          } else {
-//            return message.channel.send(`You got it incorrect.`);
-//          }
-//        } catch (e) {
-//          return message.channel.send(`You did not answer!`);
-//    };
-//  }
+
+      
+      case 'cars': {
+				let qcar = questionscars[Math.floor(Math.random() * questionscars.length)];
+        let icar = 0;
+        const Embed = new MessageEmbed()
+          .setTitle(qcar.title)
+          .setDescription(
+            qcar.options.map((opt) => {
+              icar++;
+            return `${icar} - ${opt}\n`;
+            })
+          )
+          .setColor(`GREEN`)
+          .setFooter(`Reply to this message with the correct question number! You have 15 seconds.`);
+        message.channel.send(Embed);
+        try {
+          let msgs = await message.channel.awaitMessages((u2) => u2.author.id === message.author.id, {
+            time: 15000,
+            max: 1,
+            errors: ["time"]
+          });
+          if (parseInt(msgs.first().content) == qcar.correct) {
+            return message.channel.send(`You got it correct!`)
+          } else {
+            return message.channel.send(`You got it incorrect.`);
+          }
+        } catch (e) {
+          return message.channel.send(`You did not answer!`);
+    };
+  }
+
+
 
       case 'games': {
         let qgame = questionsgame[Math.floor(Math.random() * questionsgame.length)];
