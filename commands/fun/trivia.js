@@ -247,6 +247,21 @@ let questionsgeography = [{
   options: ["Gothenburg", "Malmö", "Uppsala", "Stockholm", "Linköping"],
   correct: 4
 },
+{
+  title: "What is Japan's capital city?",
+  options: ["Kyoto", "Tokyo", "Osaka", "Sapporo", "Hiroshima"],
+  correct: 2
+},
+{
+  title: "What is the United Kingdom's capital city?",
+  options: ["Manchester", "Bristol", "Edinburgh", "Birmingham", "London"],
+  correct: 5
+},
+{
+  title: "What is the tallest mountain in the world?",
+  options: ["K2", "Makula", "Mount Everest", "Ananga Parbat"],
+  correct: 3
+}
 
 ];
 
