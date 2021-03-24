@@ -23,7 +23,7 @@ module.exports = {
 				value: cu.tag
 			}, {
 				name: '\u200B',
-				value: '2MP is the main developer for Poggers Bot, he has done majority of the code. \n Meanwhile, curry is open at all times for support and corrects capital letters because 2MP always forgets.'
+				value: '2MP is the main developer for Poggers Bot, he has done majority of the code, as well as hosts the bot cus he is special and won\'t let curry host it. \n Meanwhile, curry is open at all times for support and tries his best to code some of the code (This is mostly the trivia command)'
 			}, );
 
 		message.channel.send(embed);
