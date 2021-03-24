@@ -2,6 +2,13 @@ const {
   MessageEmbed
 } = require('discord.js');
 
+let questionsgeneral [{
+ title: "This ting is a test, to see if it works <3",
+ options: {"Test", "Test1", "Test2"}, // /* Cant actually remember how to do this lol
+ correct: 2
+}
+  
+  ]
 
 module.exports = {
   name: 'testboi',
