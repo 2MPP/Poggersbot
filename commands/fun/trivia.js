@@ -406,6 +406,7 @@ let questionsgame = [{
 module.exports = {
 	name: 'trivia',
 	cooldown: 3,
+  category: "fun",
 	description: 'This is a trivia command!',
 	run: async (client, message, args) => {
 
